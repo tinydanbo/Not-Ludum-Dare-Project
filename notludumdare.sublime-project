@@ -1,0 +1,17 @@
+{
+	"folders":
+	[
+		{
+			"follow_symlinks": true,
+			"path": "."
+		}
+	],
+	"build_systems":
+	[
+		{
+			"name": "Run Project",
+			"shell_cmd": "love .",
+			"working_dir": "$project_path"
+		}
+	]
+}
