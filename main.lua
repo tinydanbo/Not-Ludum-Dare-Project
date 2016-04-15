@@ -15,6 +15,16 @@ states = {
 	test = require "game.states.test"
 }
 
+bindings = {
+	up = {"w", "up"},
+	down = {"s", "down"},
+	left = {"a", "left"},
+	right = {"d", "right"},
+	fire = {"j", "z"},
+	cancel = {"k", "x"},
+	special = {"l", "c"}
+}
+
 function getScaling()
 	local width_scale = love.graphics.getWidth() / 400
 	local height_scale = love.graphics.getHeight() / 240
