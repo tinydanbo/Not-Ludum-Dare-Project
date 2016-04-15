@@ -4,4 +4,5 @@ function love.conf(t)
 	t.window.title = "Not Ludum Dare Project"
 	t.window.width = 400
 	t.window.height = 240
+	t.window.vsync = false
 end

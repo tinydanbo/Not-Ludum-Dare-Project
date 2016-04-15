@@ -3,6 +3,8 @@ io.stdout:setvbuf("no")
 canvas = love.graphics.newCanvas(400, 240)
 canvas:setFilter("nearest", "nearest")
 
+tick = require "lib.tick"
+
 fonts = {
 	main = love.graphics.newFont("data/fonts/04B_03__.TTF", 8)
 }
@@ -18,6 +20,11 @@ function resizeWindow(factor)
 	love.window.setMode(400 * factor, 240 * factor)
 end
 
+function love.load(arg)
+	tick.framerate = 60
+	tick.rate = 1/60
+end
+
 function love.draw()
 	love.graphics.setCanvas(canvas)
 		love.graphics.clear()
@@ -31,6 +38,7 @@ function love.draw()
 		love.graphics.setFont(fonts.main)
 		love.graphics.print("\"Our frothing demand for this game increases\" - IGN", 20, 20)
 		love.graphics.printf("1-4 changes window size...", 0, 228, 396, "right")
+		love.graphics.printf(tostring(love.timer.getFPS()), 0, 2, 398, "right")
 	love.graphics.setCanvas()
 
 	local scaling = getScaling()
