@@ -23,12 +23,18 @@ function getScaling()
 end
 
 function resizeWindow(factor)
-	love.window.setMode(400 * factor, 240 * factor)
+	local display = love.window.getDisplayCount()
+	love.window.setMode(400 * factor, 240 * factor, {
+		vsync = true,
+		display = display
+	})
 end
 
 function love.load(arg)
 	tick.framerate = 60
 	tick.rate = 1/60
+
+	resizeWindow(2)
 
 	StateManager.registerEvents{'update', 'quit'}
 	StateManager.switch(states.test)
@@ -38,10 +44,13 @@ function love.draw()
 	love.graphics.setCanvas(canvas)
 		love.graphics.clear()
 		StateManager.draw()
+
+		love.graphics.setColor(255, 255, 255)
 		love.graphics.setFont(fonts.main)
 		love.graphics.printf(tostring(love.timer.getFPS()), 0, 2, 398, "right")
 	love.graphics.setCanvas()
 
+	love.graphics.setColor(255, 255, 255)
 	local scaling = getScaling()
 	love.graphics.draw(
 		canvas,
