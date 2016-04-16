@@ -26,7 +26,7 @@
         <file id="22" name="e11.png" width="5" height="5" pivot_x="0.5" pivot_y="0.5"/>
     </folder>
     <entity id="0" name="entity_000">
-        <animation id="0" name="Idle" length="1000" interval="33">
+        <animation id="0" name="Idle" length="1000" interval="100">
             <mainline>
                 <key id="0">
                     <object_ref id="0" timeline="0" key="0" z_index="0"/>
@@ -34,11 +34,11 @@
             </mainline>
             <timeline id="0" name="1">
                 <key id="0" spin="0">
-                    <object folder="0" file="0" pivot_x="0.585" pivot_y="0.019231"/>
+                    <object folder="0" file="0" pivot_x="0.585" pivot_y="0.019231" angle="0"/>
                 </key>
             </timeline>
         </animation>
-        <animation id="1" name="Walk" length="525" interval="33">
+        <animation id="1" name="Walk" length="525" interval="100">
             <mainline>
                 <key id="0" curve_type="instant">
                     <object_ref id="0" timeline="0" key="0" z_index="0"/>
@@ -55,26 +55,26 @@
             </mainline>
             <timeline id="0" name="1">
                 <key id="0" spin="0">
-                    <object folder="0" file="0" pivot_x="0.585" pivot_y="0.019231"/>
+                    <object folder="0" file="0" pivot_x="0.585" pivot_y="0.019231" angle="0"/>
                 </key>
             </timeline>
             <timeline id="1" name="2">
                 <key id="0" time="132" spin="0">
-                    <object folder="0" file="1" x="-2" y="1"/>
+                    <object folder="0" file="1" x="-2" y="1" angle="0"/>
                 </key>
             </timeline>
             <timeline id="2" name="1_000">
                 <key id="0" time="264" spin="0">
-                    <object folder="0" file="0" x="-2"/>
+                    <object folder="0" file="0" x="-2" angle="0"/>
                 </key>
             </timeline>
             <timeline id="3" name="3">
                 <key id="0" time="396" spin="0">
-                    <object folder="0" file="2" x="-2" y="1"/>
+                    <object folder="0" file="2" x="-2" y="1" angle="0"/>
                 </key>
             </timeline>
         </animation>
-        <animation id="2" name="Dash" length="1000" interval="33">
+        <animation id="2" name="Dash" length="1000" interval="100">
             <mainline>
                 <key id="0">
                     <object_ref id="0" timeline="0" key="0" z_index="0"/>
@@ -82,11 +82,11 @@
             </mainline>
             <timeline id="0" name="4">
                 <key id="0" spin="0">
-                    <object folder="0" file="3"/>
+                    <object folder="0" file="3" angle="0"/>
                 </key>
             </timeline>
         </animation>
-        <animation id="3" name="Jump" length="1000" interval="33">
+        <animation id="3" name="Jump" length="1000" interval="100">
             <mainline>
                 <key id="0">
                     <object_ref id="0" timeline="0" key="0" z_index="0"/>
@@ -94,11 +94,11 @@
             </mainline>
             <timeline id="0" name="5">
                 <key id="0" spin="0">
-                    <object folder="0" file="4" x="-2"/>
+                    <object folder="0" file="4" x="-2" angle="0"/>
                 </key>
             </timeline>
         </animation>
-        <animation id="4" name="Flinch" length="1000" interval="33" looping="false">
+        <animation id="4" name="Flinch" length="1000" interval="100" looping="false">
             <mainline>
                 <key id="0">
                     <object_ref id="0" timeline="0" key="0" z_index="0"/>
@@ -106,11 +106,11 @@
             </mainline>
             <timeline id="0" name="6">
                 <key id="0" spin="0">
-                    <object folder="0" file="5" x="-3"/>
+                    <object folder="0" file="5" x="-3" angle="0"/>
                 </key>
             </timeline>
         </animation>
-        <animation id="5" name="Attack1" length="1000" interval="33" looping="false">
+        <animation id="5" name="Attack1" length="1000" interval="100" looping="false">
             <mainline>
                 <key id="0">
                     <object_ref id="0" timeline="0" key="0" z_index="0"/>
@@ -134,45 +134,45 @@
             </mainline>
             <timeline id="0" name="7">
                 <key id="0" spin="0">
-                    <object folder="0" file="6" x="-3"/>
+                    <object folder="0" file="6" x="-3" angle="0"/>
                 </key>
             </timeline>
             <timeline id="1" name="8">
                 <key id="0" time="165" spin="0">
-                    <object folder="0" file="7" x="-2"/>
+                    <object folder="0" file="7" x="-2" angle="0"/>
                 </key>
                 <key id="1" time="264" spin="0">
-                    <object folder="0" file="7" x="-2"/>
+                    <object folder="0" file="7" x="-2" angle="0"/>
                 </key>
                 <key id="2" time="363" spin="0">
-                    <object folder="0" file="7" x="-2"/>
+                    <object folder="0" file="7" x="-2" angle="0"/>
                 </key>
                 <key id="3" time="462" spin="0">
-                    <object folder="0" file="7" x="-2"/>
+                    <object folder="0" file="7" x="-2" angle="0"/>
                 </key>
             </timeline>
             <timeline id="2" name="e1">
                 <key id="0" spin="0">
-                    <object folder="0" file="12" x="-5" y="3"/>
+                    <object folder="0" file="12" x="-5" y="3" angle="0"/>
                 </key>
             </timeline>
             <timeline id="3" name="e2">
                 <key id="0" time="165" spin="0">
-                    <object folder="0" file="13" x="4" y="4" scale_x="1.428571"/>
+                    <object folder="0" file="13" x="4" y="4" angle="0" scale_x="1.428571"/>
                 </key>
             </timeline>
             <timeline id="4" name="e3">
                 <key id="0" time="264" spin="0">
-                    <object folder="0" file="14" x="8" y="4"/>
+                    <object folder="0" file="14" x="8" y="4" angle="0"/>
                 </key>
             </timeline>
             <timeline id="5" name="e4">
                 <key id="0" time="363" spin="0">
-                    <object folder="0" file="15" x="9" y="4"/>
+                    <object folder="0" file="15" x="9" y="4" angle="0"/>
                 </key>
             </timeline>
         </animation>
-        <animation id="6" name="Attack2" length="1000" interval="33" looping="false">
+        <animation id="6" name="Attack2" length="1000" interval="100" looping="false">
             <mainline>
                 <key id="0">
                     <object_ref id="0" timeline="1" key="0" z_index="0"/>
@@ -195,40 +195,40 @@
             </mainline>
             <timeline id="0" name="9">
                 <key id="0" time="165" spin="0">
-                    <object folder="0" file="8"/>
+                    <object folder="0" file="8" angle="0"/>
                 </key>
                 <key id="1" time="264" spin="0">
-                    <object folder="0" file="8"/>
+                    <object folder="0" file="8" angle="0"/>
                 </key>
                 <key id="2" time="363" spin="0">
-                    <object folder="0" file="8"/>
+                    <object folder="0" file="8" angle="0"/>
                 </key>
                 <key id="3" time="462" spin="0">
-                    <object folder="0" file="8"/>
+                    <object folder="0" file="8" angle="0"/>
                 </key>
             </timeline>
             <timeline id="1" name="10_000">
                 <key id="0" spin="0">
-                    <object folder="0" file="9" x="-3"/>
+                    <object folder="0" file="9" x="-3" angle="0"/>
                 </key>
             </timeline>
             <timeline id="2" name="e5">
                 <key id="0" time="165" spin="0">
-                    <object folder="0" file="16" x="18" y="8" scale_x="1.080635" scale_y="1.065861"/>
+                    <object folder="0" file="16" x="18" y="8" angle="0" scale_x="1.080635" scale_y="1.065861"/>
                 </key>
             </timeline>
             <timeline id="3" name="e6">
                 <key id="0" time="264" spin="0">
-                    <object folder="0" file="17" x="19" y="7"/>
+                    <object folder="0" file="17" x="19" y="7" angle="0"/>
                 </key>
             </timeline>
             <timeline id="4" name="e7">
                 <key id="0" time="363" spin="0">
-                    <object folder="0" file="18" x="19" y="6"/>
+                    <object folder="0" file="18" x="19" y="6" angle="0"/>
                 </key>
             </timeline>
         </animation>
-        <animation id="7" name="Attack3" length="1000" interval="33" looping="false">
+        <animation id="7" name="Attack3" length="1000" interval="100" looping="false">
             <mainline>
                 <key id="0">
                     <object_ref id="0" timeline="0" key="0" z_index="0"/>
@@ -252,41 +252,41 @@
             </mainline>
             <timeline id="0" name="12">
                 <key id="0" spin="0">
-                    <object folder="0" file="11" x="2"/>
+                    <object folder="0" file="11" x="2" angle="0"/>
                 </key>
             </timeline>
             <timeline id="1" name="11">
                 <key id="0" time="165" spin="0">
-                    <object folder="0" file="10" x="-1"/>
+                    <object folder="0" file="10" x="-1" angle="0"/>
                 </key>
                 <key id="1" time="264" spin="0">
-                    <object folder="0" file="10" x="-1"/>
+                    <object folder="0" file="10" x="-1" angle="0"/>
                 </key>
                 <key id="2" time="363" spin="0">
-                    <object folder="0" file="10" x="-1"/>
+                    <object folder="0" file="10" x="-1" angle="0"/>
                 </key>
                 <key id="3" time="462" spin="0">
-                    <object folder="0" file="10" x="-1"/>
+                    <object folder="0" file="10" x="-1" angle="0"/>
                 </key>
             </timeline>
             <timeline id="2" name="e11">
                 <key id="0" spin="0">
-                    <object folder="0" file="22" x="-5" y="3"/>
+                    <object folder="0" file="22" x="-5" y="3" angle="0"/>
                 </key>
             </timeline>
             <timeline id="3" name="e8">
                 <key id="0" time="165" spin="0">
-                    <object folder="0" file="19" x="16" y="13"/>
+                    <object folder="0" file="19" x="16" y="13" angle="0"/>
                 </key>
             </timeline>
             <timeline id="4" name="e9">
                 <key id="0" time="264" spin="0">
-                    <object folder="0" file="20" x="18" y="12"/>
+                    <object folder="0" file="20" x="18" y="12" angle="0"/>
                 </key>
             </timeline>
             <timeline id="5" name="e10">
                 <key id="0" time="363" spin="0">
-                    <object folder="0" file="21" x="18" y="11"/>
+                    <object folder="0" file="21" x="18" y="11" angle="0"/>
                 </key>
             </timeline>
         </animation>

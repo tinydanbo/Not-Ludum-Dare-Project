@@ -6,11 +6,18 @@ TestDraw = Class{
 	end
 }
 
-function TestDraw:draw()
-	local x,y = self.entity.position:unpack()
+function TestDraw:draw(x, y, colors)
+	if not x and not y then
+		x,y = self.entity.position:unpack()
+	end
 
-	love.graphics.setColor(80, 80, 80)
-	love.graphics.rectangle("fill", x-8, y-8, 16, 16)
+	if not colors then
+		love.graphics.setColor(80, 80, 80)
+	else
+		love.graphics.setColor(unpack(colors))
+	end
+
+	love.graphics.rectangle("fill", math.floor(x-8), math.floor(y-8), 16, 16)
 end
 
 return TestDraw

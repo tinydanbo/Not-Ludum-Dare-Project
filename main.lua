@@ -12,7 +12,7 @@ fonts = {
 }
 
 states = {
-	test = require "game.states.test"
+	game = require "game.states.game"
 }
 
 bindings = {
@@ -47,7 +47,7 @@ function love.load(arg)
 	resizeWindow(2)
 
 	StateManager.registerEvents{'update', 'quit'}
-	StateManager.switch(states.test)
+	StateManager.switch(states.game)
 end
 
 function love.draw()
@@ -79,5 +79,25 @@ function love.keyreleased(key)
 		resizeWindow(tonumber(key))
 	else
 		StateManager.keyreleased(key)
+	end
+end
+
+function keyToAction(key)
+	for k,v in pairs(bindings) do
+		for _,v2 in ipairs(v) do
+			if key == v2 then
+				return k
+			end
+		end
+	end
+
+	return nil
+end
+
+function love.keypressed(key)
+	local action = keyToAction(key)
+
+	if action and StateManager.current().onAction then
+		StateManager.current():onAction(action)
 	end
 end
