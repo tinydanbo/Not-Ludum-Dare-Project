@@ -383,8 +383,8 @@
 				{
 					"gline": [],
 					"id": 3,
-					"interval": 100,
-					"length": 1000,
+					"interval": 16,
+					"length": 240,
 					"mainline": {
 						"key": [
 							{
@@ -409,6 +409,7 @@
 								{
 									"id": 0,
 									"object": {
+										"angle": 0,
 										"file": 36,
 										"folder": 0,
 										"x": -0.9900990099009901,
@@ -466,8 +467,8 @@
 				{
 					"gline": [],
 					"id": 5,
-					"interval": 100,
-					"length": 1000,
+					"interval": 16,
+					"length": 240,
 					"mainline": {
 						"key": [
 							{
@@ -1324,12 +1325,14 @@
 				{
 					"gline": [],
 					"id": 12,
-					"interval": 100,
-					"length": 1000,
+					"interval": 16,
+					"length": 192,
+					"looping": "false",
 					"mainline": {
 						"key": [
 							{
 								"bone_ref": [],
+								"curve_type": "instant",
 								"id": 0,
 								"object_ref": [
 									{
@@ -1339,6 +1342,20 @@
 										"z_index": "0"
 									}
 								]
+							},
+							{
+								"bone_ref": [],
+								"curve_type": "instant",
+								"id": 1,
+								"object_ref": [
+									{
+										"id": 0,
+										"key": 1,
+										"timeline": "0",
+										"z_index": "0"
+									}
+								],
+								"time": 176
 							}
 						]
 					},
@@ -1358,6 +1375,19 @@
 										"y": 1
 									},
 									"spin": 0
+								},
+								{
+									"id": 1,
+									"object": {
+										"angle": 0,
+										"file": 34,
+										"folder": 0,
+										"scale_x": -1,
+										"x": 7,
+										"y": 1
+									},
+									"spin": 0,
+									"time": 176
 								}
 							],
 							"name": "climb3"
