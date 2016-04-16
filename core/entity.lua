@@ -36,6 +36,12 @@ end
 
 function Entity:draw()
 	for k,v in pairs(self.components) do
+		if v.beforeDraw then
+			v:beforeDraw()
+		end
+	end
+
+	for k,v in pairs(self.components) do
 		if v.draw then
 			v:draw()
 		end

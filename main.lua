@@ -12,6 +12,7 @@ fonts = {
 }
 
 states = {
+	test = require "game.states.test",
 	game = require "game.states.game"
 }
 

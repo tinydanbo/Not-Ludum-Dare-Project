@@ -8,9 +8,9 @@ AfterImages = Class{
 		self.hidden = true
 
 		self.drawConfig = {
-			{frame_no = 59, opacity = 0.5},
-			{frame_no = 57, opacity = 0.5},
-			{frame_no = 55, opacity = 0.5}
+			{frame_no = 59, opacity = 1},
+			{frame_no = 58, opacity = 1},
+			{frame_no = 57, opacity = 1}
 		}
 
 		-- prepopulate the known images table
@@ -38,10 +38,10 @@ function AfterImages:hide()
 	self.hidden = true
 end
 
-function AfterImages:draw()
+function AfterImages:beforeDraw()
 	if self.hidden then return end
 
-	local entityDrawComponent = self.entity:getComponent("TestDraw")
+	local entityDrawComponent = self.entity:getComponent("AnimationView")
 	for i,v in ipairs(self.drawConfig) do
 		local frame = self.positions[v.frame_no]
 		entityDrawComponent:draw(frame.x, frame.y, {0, 0, 200, v.opacity * 255})

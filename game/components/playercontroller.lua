@@ -7,25 +7,27 @@ PlayerController = Class{
 	init = function(self, entity, world)
 		self.entity = entity
 		self.timer = Timer.new()
-
 		self.velocity = Vector(0, 0)
+
 		self.speed = 0.9
 		self.maxspeed = 3
 		self.decel = 0.9
 		self.jumpstrength = 5
-		self.dashstrength = 5
+		self.dashstrength = 6
 		self.gravity = 0.2
+
+
 		self.movementLocked = false
 		self.world = world
 
-		self.animationSet = self.entity:getComponent("AnimationSet")
+		self.animationView = self.entity:getComponent("AnimationView")
 
 		self.state = "falling"
 
 		self.orientation = Vector(1, 0)
 		self.wallgrabOrientation = Vector(0, 0)
 
-		self.hitbox = Hitbox(self.entity, world, 16, 16, 0, 0)
+		self.hitbox = Hitbox(self.entity, world, 12, 20, 0, 0)
 	end
 }
 
@@ -83,7 +85,6 @@ function PlayerController:update()
 	end
 
 	self:setAnimation()
-	self.animationSet:setFlip(self.orientation.x ~= 1)
 
 	self.velocity.y = self.velocity.y + self.gravity
 
@@ -91,17 +92,21 @@ function PlayerController:update()
 end
 
 function PlayerController:setAnimation()
-	local animationSet = self.animationSet
+	local animationView = self.animationView
+
+	animationView:setFlip(self.orientation.x ~= 1)
 
 	if self.state == "jumping" or self.state == "falling" then
-		animationSet:switchAnimation("Jump")
+		animationView:switchAnimation("Jump")
 	elseif self.state == "dashing" then
-		animationSet:switchAnimation("Dash")
+		animationView:switchAnimation("Dash")
+	elseif self.state == "attacking" then
+		animationView:switchAnimation("Attack1")
 	else
 		if math.abs(self.velocity.x) > 0 then
-			animationSet:switchAnimation("Walk")
+			animationView:switchAnimation("Walk")
 		else 
-			animationSet:switchAnimation("Idle")
+			animationView:switchAnimation("Idle")
 		end
 	end
 end
@@ -130,6 +135,10 @@ function PlayerController:land()
 	self.velocity.y = 0
 end
 
+function PlayerController:attack()
+	self.state = "attacking"
+end
+
 function PlayerController:startWallGrab(normal_x)
 	if self.state == "falling" then
 		self.state = "wallgrab"
@@ -145,16 +154,16 @@ function PlayerController:dash()
 		self.state = "dashing"
 		self.movementLocked = true
 		self.velocity.y = 0 -- math.max(self.velocity.y, 0)
-		-- afterImageComponent:show()
+		afterImageComponent:show()
 		self.velocity.x = self.orientation.x * self.dashstrength
 		self.timer:clear()
-		self.timer.tween(22, self.velocity, {x = self.velocity.x * 0.75}, "linear")
+		self.timer.tween(22, self.velocity, {x = self.velocity.x * 0.5}, "linear")
 		self.timer.after(24, function()
 			self.state = "walking"
 			self.movementLocked = false
 		end)
 		self.timer.after(30, function()
-			-- afterImageComponent:hide()
+			afterImageComponent:hide()
 		end)
 	end
 end
@@ -181,7 +190,9 @@ function PlayerController:drawAfter()
 end
 
 function PlayerController:onAction(action)
-	if action == "cancel" then
+	if action == "fire" then
+		self:attack()
+	elseif action == "cancel" then
 		self:jump()
 	elseif action == "special" then
 		self:dash()

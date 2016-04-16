@@ -1,32 +1,36 @@
 Manager = require "core.manager"
-TestEntity = require "game.entities.testentity"
+AnimationSet = require "core.animationset"
 
 local test = {}
 
 function test:enter()
-	self.manager = Manager()
-	self.manager:add(TestEntity(100, 100))
+	self.animationSet = AnimationSet("data/graphics/player", "player.scon")
+
+	self.animations = {"Idle", "Walk", "Dash", "Jump", "Flinch", "Attack1", "Attack2", "Attack3"}
+	self.animation_no = 1
+
+	self.animationSet:switchAnimation("Idle", true)
 end
 
 function test:update()
-	self.manager:update()
+	self.animationSet:update()
 end
 
 function test:draw()
-	love.graphics.setColor(
-		(math.sin(love.timer.getTime()*0.4) * 120) + 120, 
-		(math.cos(love.timer.getTime()*1.8) * 120) + 120,
-		(math.sin(love.timer.getTime()*1.2) * 120) + 120
-	)
-	love.graphics.rectangle("fill", 0, 0, 400, 240)
+	love.graphics.setColor(100, 100, 100, 255)
+	love.graphics.line(50, 0, 50, 240)
+	love.graphics.line(0, 50, 400, 50)
 	love.graphics.setColor(255, 255, 255)
-	love.graphics.setFont(fonts.main)
-	love.graphics.print("\"Our frothing demand for this game increases\" - IGN", 20, 20)
+	self.animationSet:draw(50, 50)
+	love.graphics.print(self.animations[self.animation_no], 10, 10)
+end
 
-	self.manager:draw()
-
-	love.graphics.setColor(255, 255, 255)
-	love.graphics.printf("1-4 changes window size...", 0, 228, 396, "right")
+function test:onAction()
+	self.animation_no = self.animation_no + 1
+	if self.animation_no > #self.animations then
+		self.animation_no = 1
+	end
+	self.animationSet:switchAnimation(self.animations[self.animation_no], true)
 end
 
 return test
