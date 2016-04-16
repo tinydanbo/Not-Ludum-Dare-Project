@@ -32,13 +32,15 @@ end
 
 function game:draw()
 	self.camera:attach()
-		self.manager:draw()
 
 		love.graphics.setColor(200, 200, 200)
 
 		for i,v in ipairs(self.platforms) do
 			love.graphics.rectangle("fill", unpack(v))
 		end
+
+		love.graphics.setColor(255, 255, 255)
+		self.manager:draw()
 	self.camera:detach()
 end
 
