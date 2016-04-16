@@ -62,8 +62,7 @@ function PlayerController:update()
 		end
 
 		if self.state == "wallgrab" then
-			if desiredMovement.x == self.wallgrabOrientation then
-				print("hi")
+			if desiredMovement.x == self.wallgrabOrientation.x then
 				self.state = "falling"
 				self.animationView:switchAnimation("Jump", true)
 			else
