@@ -12,6 +12,14 @@ function Entity:move(movement)
 	self.position = self.position + movement
 end
 
+function Entity:broadcastEvent(event, ...)
+	for k,v in pairs(self.components) do
+		if v.receiveEvent then
+			v:receiveEvent(event, ...)
+		end
+	end
+end
+
 function Entity:addComponent(key, component)
 	self.components[key] = component
 end

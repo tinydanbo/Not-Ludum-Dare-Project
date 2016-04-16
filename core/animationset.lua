@@ -21,6 +21,10 @@ AnimationSet = Class{
 	end
 }
 
+function AnimationSet:getCurrentAnimationName()
+	return self.currentAnimationName
+end
+
 function AnimationSet:switchAnimation(name, reset)
 	self.currentAnimationName = name
 
@@ -36,7 +40,13 @@ function AnimationSet:update()
 	currentAnimation.time = currentAnimation.time + math.floor(1000/60)
 
 	if currentAnimation.time > currentAnimation.length then
-		currentAnimation.time = currentAnimation.time - currentAnimation.length
+		if currentAnimation.looping then
+			currentAnimation.time = currentAnimation.time - currentAnimation.length
+		end
+
+		if self.onLoop then
+			self.onLoop(self.currentAnimationName)
+		end
 	end
 end
 
@@ -53,10 +63,10 @@ function AnimationSet:getFrame()
 	return best_frame
 end
 
-function AnimationSet:draw(x, y)
-	local currentAnimation = self.animations[self.currentAnimationName]
+function AnimationSet:draw(x, y, animation, frame)
+	local currentAnimation = self.animations[animation or self.currentAnimationName]
 
-	local currentMainlineKeyframe = currentAnimation.mainline_keyframes[self:getFrame()]
+	local currentMainlineKeyframe = currentAnimation.mainline_keyframes[frame or self:getFrame()]
 
 	for _,object in ipairs(currentMainlineKeyframe.object_ref) do
 		local timeline = tonumber(object.timeline)
@@ -99,8 +109,13 @@ function AnimationSet:loadAnimations(spriter_data)
 		local new_animation = {}
 		new_animation = {
 			time = 0,
-			length = animation.length
-		}
+			length = animation.length,
+			looping = true
+		}	
+
+		if animation.looping and animation.looping == "false" then
+			new_animation.looping = false
+		end
 
 		new_animation.mainline_keyframes = {}
 

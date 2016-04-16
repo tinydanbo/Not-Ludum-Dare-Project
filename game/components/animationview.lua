@@ -8,8 +8,25 @@ AnimationView = Class{
 		self.oy = oy
 		self.animationSet = AnimationSet(folder, filename)
 		self.animationSet:switchAnimation(initial_animation, true)
+
+		self.animationSet.onLoop = function(animationName)
+			self.entity:broadcastEvent("animation loop", animationName)
+		end
 	end
 }
+
+function AnimationView:getAnimationName()
+	return self.animationSet:getCurrentAnimationName()
+end
+
+function AnimationView:getFrame()
+	return self.animationSet:getFrame()
+end
+
+function AnimationView:setOffset(x, y)
+	self.ox = x
+	self.oy = y
+end
 
 function AnimationView:switchAnimation(name, reset)
 	self.animationSet:switchAnimation(name, reset)
@@ -23,7 +40,7 @@ function AnimationView:setFlip(flip)
 	self.animationSet:setFlip(flip)
 end
 
-function AnimationView:draw(x, y)
+function AnimationView:draw(x, y, colors, animation_name, frame)
 	if not x and not y then
 		x,y = self.entity.position:unpack()
 	end
@@ -31,7 +48,13 @@ function AnimationView:draw(x, y)
 	x = x + self.ox
 	y = y + self.oy
 
-	self.animationSet:draw(x, y)
+	if colors then
+		love.graphics.setColor(unpack(colors))
+	else
+		love.graphics.setColor(255, 255, 255)
+	end
+
+	self.animationSet:draw(x, y, animation_name, frame)
 end
 
 return AnimationView

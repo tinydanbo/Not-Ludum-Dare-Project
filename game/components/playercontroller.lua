@@ -12,9 +12,11 @@ PlayerController = Class{
 		self.speed = 0.9
 		self.maxspeed = 3
 		self.decel = 0.9
-		self.jumpstrength = 5
-		self.dashstrength = 6
+		self.jumpstrength = 4
 		self.gravity = 0.2
+
+		self.dashlength = 30
+		self.wallgrabframes = 0
 
 
 		self.movementLocked = false
@@ -54,82 +56,135 @@ function PlayerController:update()
 	local desiredMovement = self:getDesiredMovement()
 
 	if not self.movementLocked then
-		if self.state == "wallgrab" and desiredMovement.x ~= 0 then
-			if desiredMovement.x ~= self.wallgrabOrientation then
-				self.state = "falling"
-			end
-		end
 
 		if desiredMovement.x ~= 0 then
 			self.orientation.x = desiredMovement.x
 		end
 
-		self.velocity.x = self.velocity.x + desiredMovement.x * self.speed
-		if self.velocity.x > self.maxspeed then
-			self.velocity.x = self.maxspeed
-		elseif self.velocity.x < -self.maxspeed then
-			self.velocity.x = -self.maxspeed
+		if self.state == "wallgrab" then
+			if desiredMovement.x == self.wallgrabOrientation then
+				print("hi")
+				self.state = "falling"
+				self.animationView:switchAnimation("Jump", true)
+			else
+				self.wallgrabframes = self.wallgrabframes - 1
+				if self.wallgrabframes <= 0 then
+					self.state = "falling"
+					self.animationView:switchAnimation("Jump", true)
+					self.orientation.x = self.orientation.x * -1
+				end
+			end
+		end
+
+		local decel = self.decel
+		local speed = self.speed
+		local maxspeed = self.maxspeed
+
+		if self.state == "dashing" or self.state == "dashjumping" then
+			maxspeed = maxspeed * 2
+			speed = speed * 3
+			decel = decel * 0.5
+		end
+
+		self.velocity.x = self.velocity.x + desiredMovement.x * speed
+		if self.velocity.x > maxspeed then
+			self.velocity.x = maxspeed
+		elseif self.velocity.x < -maxspeed then
+			self.velocity.x = -maxspeed
+		end
+
+		if desiredMovement.x ~= 0 and self.animationView:getAnimationName() == "Idle" then
+			self.animationView:switchAnimation("Walk", true)
+		elseif desiredMovement.x == 0 and self.animationView:getAnimationName() == "Walk" then
+			self.animationView:switchAnimation("Idle", true)
 		end
 
 		if desiredMovement.x == 0 then
 			if self.velocity.x > 0 then
-				self.velocity.x = math.max(self.velocity.x - self.decel, 0)
+				self.velocity.x = math.max(self.velocity.x - decel, 0)
 			else
-				self.velocity.x = math.min(self.velocity.x + self.decel, 0)
+				self.velocity.x = math.min(self.velocity.x + decel, 0)
 			end
 		end
 	end
 
-	if self.state == "jumping" and self.velocity.y > 0 then
+	if (self.state == "jumping" or self.state == "dashjumping") and self.velocity.y > 0 then
 		self.state = "falling"
+	end
+
+	if (self.state == "walking") and self.velocity.y > 0.5 then
+		self.state = "falling"
+		self.animationView:switchAnimation("Jump", true)
 	end
 
 	self:setAnimation()
 
-	self.velocity.y = self.velocity.y + self.gravity
+	if self.state == "wallgrab" then
+		self.velocity.y = self.gravity
+	else
+		self.velocity.y = self.velocity.y + self.gravity
+	end
 
 	self:move(self.velocity)
 end
 
-function PlayerController:setAnimation()
-	local animationView = self.animationView
-
-	animationView:setFlip(self.orientation.x ~= 1)
-
-	if self.state == "jumping" or self.state == "falling" then
-		animationView:switchAnimation("Jump")
-	elseif self.state == "dashing" then
-		animationView:switchAnimation("Dash")
-	elseif self.state == "attacking" then
-		animationView:switchAnimation("Attack1")
-	else
-		if math.abs(self.velocity.x) > 0 then
-			animationView:switchAnimation("Walk")
-		else 
-			animationView:switchAnimation("Idle")
+function PlayerController:receiveEvent(event, animationName)
+	if event == "animation loop" then
+		if animationName == "Land" then
+			self.animationView:switchAnimation("Idle", true)
+		elseif animationName == "ClimbCling" then
+			self.animationView:switchAnimation("Climb", true)
 		end
 	end
 end
 
+function PlayerController:setAnimation()
+	local animationView = self.entity:getComponent("AnimationView")
+
+	local shouldFlip = self.orientation.x ~= 1
+
+	animationView:setOffset(0, 10)
+
+	if animationView:getAnimationName() == "Idle" then
+		animationView:setOffset(0, 11)
+	end
+
+	if animationView:getAnimationName() == "Climb" or animationView:getAnimationName() == "ClimbCling" then
+		shouldFlip = not shouldFlip
+		if self.orientation.x > 0 then
+			animationView:setOffset(6, 11)
+		else
+			animationView:setOffset(-6, 11)
+		end
+	end
+
+	animationView:setFlip(shouldFlip)
+end
+
 function PlayerController:jump()
 	if self.state == "walking" then
+		self.animationView:switchAnimation("Jump", true)
 		self.velocity.y = self.jumpstrength * -1
 		self.state = "jumping"
+	end
+
+	if self.state == "dashing" then
+		self.animationView:switchAnimation("Jump", true)
+		self.velocity.y = self.jumpstrength * -1
+		self.state = "dashjumping"
 	end
 
 	if self.state == "wallgrab" then
 		self.state = "jumping"
+		self.animationView:switchAnimation("Jump", true)
 		self.velocity.y = self.jumpstrength * -1
 		self.velocity.x = self.wallgrabOrientation.x * 1
-		self.movementLocked = true
-		self.timer.after(10, function()
-			self.movementLocked = false
-		end)
 	end
 end
 
 function PlayerController:land()
-	if self.state ~= "dashing" then
+	if self.state == "jumping" or self.state == "falling" then
+		self.animationView:switchAnimation("Land", true)
 		self.state = "walking"
 	end
 	self.velocity.y = 0
@@ -140,44 +195,53 @@ function PlayerController:attack()
 end
 
 function PlayerController:startWallGrab(normal_x)
-	if self.state == "falling" then
+	if self.state == "falling" or self.state == "jumping" or self.state == "dashjumping" then
+		self.wallgrabframes = 20
+		self.animationView:switchAnimation("ClimbCling", true)
 		self.state = "wallgrab"
 		self.velocity.y = 0
 		self.wallgrabOrientation.x = normal_x
 	end
 end
 
+function PlayerController:maintainWallGrab(normal_x)
+	self.wallgrabframes = 20
+	self.state = "wallgrab"
+	self.velocity.y = 0
+	self.wallgrabOrientation.x = normal_x
+end
+
 function PlayerController:dash()
+	if self.state == "dashing" or self.state == "jumping" or self.state == "falling" or self.state == "wallgrab" then return end
 	local afterImageComponent = self.entity:getComponent("AfterImage")
 
-	if not self.movementLocked then
-		self.state = "dashing"
-		self.movementLocked = true
-		self.velocity.y = 0 -- math.max(self.velocity.y, 0)
-		afterImageComponent:show()
-		self.velocity.x = self.orientation.x * self.dashstrength
-		self.timer:clear()
-		self.timer.tween(22, self.velocity, {x = self.velocity.x * 0.5}, "linear")
-		self.timer.after(24, function()
-			self.state = "walking"
-			self.movementLocked = false
-		end)
-		self.timer.after(30, function()
-			afterImageComponent:hide()
-		end)
-	end
+	self.state = "dashing"
+	self.animationView:switchAnimation("Dash", true)
+	self.velocity.y = 0 -- math.max(self.velocity.y, 0)
+	afterImageComponent:show()
+	self.timer:clear()
+	self.timer.after(self.dashlength, function()
+		self.state = "walking"
+		self.animationView:switchAnimation("Idle", true)
+	end)
+	self.timer.after(self.dashlength + 8, function()
+		afterImageComponent:hide()
+	end)
 end
 
 function PlayerController:onCollide(collision)
 	if collision.normal.y == -1 then
 		self:land()
 	elseif collision.normal.y == 1 then
-		self.state = "falling"
 		self.velocity.y = 0
 	end
 
 	if collision.normal.x ~= 0 and collision.normal.y == 0 then
-		self:startWallGrab(collision.normal.x)
+		if self.state == "wallgrab" then
+			self:maintainWallGrab(collision.normal.x)
+		else
+			self:startWallGrab(collision.normal.x)
+		end
 	end
 end
 

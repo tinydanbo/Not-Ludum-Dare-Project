@@ -44,6 +44,7 @@ end
 function love.load(arg)
 	tick.framerate = 60
 	tick.rate = 1/60
+	tick.timescale = 1
 
 	resizeWindow(2)
 

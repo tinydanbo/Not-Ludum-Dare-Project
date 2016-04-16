@@ -9,8 +9,8 @@ Player = Class{__includes = Entity,
 	init = function(self, x, y, world)
 		Entity.init(self, x, y)
 
-		self:addComponent("AfterImage", AfterImage(self))
 		self:addComponent("AnimationView", AnimationView(self, 0, 10, "data/graphics/player", "player.scon", "Idle"))
+		self:addComponent("AfterImage", AfterImage(self))
 		self:addComponent("PlayerController", PlayerController(self, world))
 	end
 }
