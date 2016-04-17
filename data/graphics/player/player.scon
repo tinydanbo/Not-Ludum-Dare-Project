@@ -384,7 +384,7 @@
 					"gline": [],
 					"id": 3,
 					"interval": 100,
-					"length": 240,
+					"length": 120,
 					"mainline": {
 						"key": [
 							{
@@ -425,7 +425,7 @@
 				{
 					"gline": [],
 					"id": 4,
-					"interval": 16,
+					"interval": 100,
 					"length": 720,
 					"looping": "false",
 					"mainline": {
@@ -529,6 +529,7 @@
 								{
 									"id": 0,
 									"object": {
+										"angle": 0,
 										"file": 37,
 										"folder": 0,
 										"x": 1
@@ -544,6 +545,7 @@
 								{
 									"id": 0,
 									"object": {
+										"angle": 0,
 										"file": 39,
 										"folder": 0,
 										"x": 6
@@ -554,6 +556,7 @@
 								{
 									"id": 1,
 									"object": {
+										"angle": 0,
 										"file": 39,
 										"folder": 0,
 										"x": 6
@@ -564,6 +567,7 @@
 								{
 									"id": 2,
 									"object": {
+										"angle": 0,
 										"file": 39,
 										"folder": 0,
 										"x": 6
@@ -574,6 +578,7 @@
 								{
 									"id": 3,
 									"object": {
+										"angle": 0,
 										"file": 39,
 										"folder": 0,
 										"x": 6
@@ -590,6 +595,7 @@
 								{
 									"id": 0,
 									"object": {
+										"angle": 0,
 										"file": 38,
 										"folder": 0,
 										"x": -7,
@@ -606,6 +612,7 @@
 								{
 									"id": 0,
 									"object": {
+										"angle": 0,
 										"file": 43,
 										"folder": 0,
 										"x": -2,
@@ -623,6 +630,7 @@
 								{
 									"id": 0,
 									"object": {
+										"angle": 0,
 										"file": 44,
 										"folder": 0,
 										"x": 9,
@@ -640,6 +648,7 @@
 								{
 									"id": 0,
 									"object": {
+										"angle": 0,
 										"file": 45,
 										"folder": 0,
 										"x": 13,
@@ -698,7 +707,7 @@
 				{
 					"gline": [],
 					"id": 6,
-					"interval": 16,
+					"interval": 100,
 					"length": 720,
 					"looping": "false",
 					"mainline": {
@@ -820,6 +829,7 @@
 								{
 									"id": 0,
 									"object": {
+										"angle": 0,
 										"file": 40,
 										"folder": 0
 									},
@@ -834,6 +844,7 @@
 								{
 									"id": 0,
 									"object": {
+										"angle": 0,
 										"file": 41,
 										"folder": 0,
 										"x": -1
@@ -850,6 +861,7 @@
 								{
 									"id": 0,
 									"object": {
+										"angle": 0,
 										"file": 42,
 										"folder": 0,
 										"x": -1,
@@ -861,6 +873,7 @@
 								{
 									"id": 1,
 									"object": {
+										"angle": 0,
 										"file": 42,
 										"folder": 0,
 										"x": -1,
@@ -872,6 +885,7 @@
 								{
 									"id": 2,
 									"object": {
+										"angle": 0,
 										"file": 42,
 										"folder": 0,
 										"x": -1,
@@ -883,6 +897,7 @@
 								{
 									"id": 3,
 									"object": {
+										"angle": 0,
 										"file": 42,
 										"folder": 0,
 										"x": -1,
@@ -900,6 +915,7 @@
 								{
 									"id": 0,
 									"object": {
+										"angle": 0,
 										"file": 46,
 										"folder": 0,
 										"x": -10,
@@ -916,6 +932,7 @@
 								{
 									"id": 0,
 									"object": {
+										"angle": 0,
 										"file": 47,
 										"folder": 0,
 										"x": -8,
@@ -933,6 +950,7 @@
 								{
 									"id": 0,
 									"object": {
+										"angle": 0,
 										"file": 48,
 										"folder": 0,
 										"x": -2,
@@ -950,6 +968,7 @@
 								{
 									"id": 0,
 									"object": {
+										"angle": 0,
 										"file": 49,
 										"folder": 0,
 										"x": -1,
@@ -967,6 +986,7 @@
 								{
 									"id": 0,
 									"object": {
+										"angle": 0,
 										"file": 50,
 										"folder": 0,
 										"x": 9,
@@ -984,7 +1004,7 @@
 					"gline": [],
 					"id": 7,
 					"interval": 100,
-					"length": 240,
+					"length": 120,
 					"mainline": {
 						"key": [
 							{
