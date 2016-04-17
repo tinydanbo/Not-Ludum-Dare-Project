@@ -73,7 +73,7 @@ function PlayerController:update()
 		local speed = self.speed
 		local maxspeed = self.maxspeed
 
-		if self.state == "dashing" or self.state == "dashjumping" then
+		if self.state == "dashing" or self.state == "dashjumping" or self.state == "dashjumpattack" then
 			maxspeed = maxspeed * 2
 			speed = speed * 3
 			decel = decel * 0.1
@@ -157,6 +157,9 @@ function PlayerController:receiveEvent(event, animationName)
 			self.state = "walking"
 			self.animationView:switchAnimation("Idle", true)
 			self.locked = false
+		elseif animationName == "JumpAtk" then
+			self.state = "falling"
+			self.animationView:switchAnimation("Jump", true)
 		end
 	end
 end
@@ -211,7 +214,7 @@ function PlayerController:jump()
 end
 
 function PlayerController:land()
-	if self.state == "jumping" or self.state == "falling" then
+	if self.state == "jumping" or self.state == "falling" or self.state == "jumpattack" then
 		self.animationView:switchAnimation("Land", true)
 		self.state = "walking"
 	end
@@ -221,7 +224,13 @@ end
 function PlayerController:attack()
 	if self.locked then return end
 
-	if self.state == "dashing" then
+	if self.state == "dashjumping" then
+		self.state = "dashjumpattack"
+		self.animationView:switchAnimation("JumpAtk", true)
+	elseif self.state == "jumping" or self.state == "falling" then
+		self.state = "jumpattack"
+		self.animationView:switchAnimation("JumpAtk", true)
+	elseif self.state == "dashing" then
 		self.state = "dashattack"
 		self.animationView:switchAnimation("DashAtk", true)
 		self.timer.clear()
@@ -267,7 +276,9 @@ function PlayerController:attack()
 end
 
 function PlayerController:startWallGrab(normal_x)
-	if self.state == "falling" or self.state == "jumping" or self.state == "dashjumping" then
+	if normal_x == -1 and love.keyboard.isDown(unpack(bindings.left)) then return end
+	if normal_x == 1 and love.keyboard.isDown(unpack(bindings.right)) then return end
+	if self.state == "falling" or self.state == "jumping" or self.state == "dashjumping" or self.state == "jumpattack" then
 		self.wallgrabframes = 20
 		self.animationView:switchAnimation("Climb", true)
 		self.state = "wallgrab"
@@ -293,6 +304,7 @@ function PlayerController:dash()
 	self.velocity.x = self.maxspeed * 2 * self.orientation.x
 	self.timer:clear()
 	self.timer.after(self.dashlength, function()
+		if self.state == "dashjumpattack" then return end
 		self.state = "walking"
 		self.animationView:switchAnimation("DashRecov", true)
 	end)
