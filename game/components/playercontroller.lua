@@ -1,7 +1,7 @@
 Class = require "lib.hump.class"
 Timer = require "lib.hump.timer"
 Vector = require "lib.hump.vector"
-Hitbox = require "core.hitbox"
+PlayerMeleeAttack = require "game.entities.playermeleeattack"
 
 PlayerController = Class{
 	init = function(self, entity, world)
@@ -30,16 +30,8 @@ PlayerController = Class{
 
 		self.orientation = Vector(1, 0)
 		self.wallgrabOrientation = Vector(0, 0)
-
-		self.hitbox = Hitbox(self.entity, world, 12, 20, 0, 0)
 	end
 }
-
-function PlayerController:move(movement)
-	local actual_x, actual_y = self.hitbox:move(movement)
-	self.entity.position.x = actual_x
-	self.entity.position.y = actual_y
-end
 
 function PlayerController:getDesiredMovement()
 	local desiredMovement = Vector(0, 0)
@@ -141,7 +133,7 @@ function PlayerController:update()
 		self.velocity.y = self.velocity.y + self.gravity
 	end
 
-	self:move(self.velocity)
+	self.entity:move(self.velocity)
 end
 
 function PlayerController:receiveEvent(event, animationName)
@@ -230,8 +222,10 @@ function PlayerController:attack()
 		self.animationView:switchAnimation("Attack1", true)
 		self.timer.clear()
 		self.locked = true
-		self.velocity.x = self.orientation.x * 2
-		self.timer.tween(24, self.velocity, {x = 0}, "in-quad")
+		self.velocity.x = 0
+		self.timer.after(8, function()
+			addEntity(PlayerMeleeAttack(self.entity, self.world, 16 * self.orientation.x, 6, 20, 10, 16))
+		end)
 		self.timer.after(24, function()
 			self.locked = false
 		end)
@@ -240,8 +234,10 @@ function PlayerController:attack()
 		self.animationView:switchAnimation("Attack2", true)
 		self.timer.clear()
 		self.locked = true
-		self.velocity.x = self.orientation.x * 2
-		self.timer.tween(24, self.velocity, {x = 0}, "in-quad")
+		self.velocity.x = 0
+		self.timer.after(12, function()
+			addEntity(PlayerMeleeAttack(self.entity, self.world, 16 * self.orientation.x, 2, 24, 12, 12))
+		end)
 		self.timer.after(24, function()
 			self.locked = false
 		end)
@@ -250,8 +246,10 @@ function PlayerController:attack()
 		self.animationView:switchAnimation("Attack3", true)
 		self.timer.clear()
 		self.locked = true
-		self.velocity.x = self.orientation.x * 4
-		self.timer.tween(24, self.velocity, {x = 0}, "in-quad")
+		self.velocity.x = 0
+		self.timer.after(12, function()
+			addEntity(PlayerMeleeAttack(self.entity, self.world, 16 * self.orientation.x, -2, 24, 12, 12))
+		end)
 		self.timer.after(24, function()
 			self.locked = false
 		end)
@@ -292,6 +290,8 @@ function PlayerController:dash()
 end
 
 function PlayerController:onCollide(collision)
+	if collision.item.tag and collision.other.tag then return end
+
 	if collision.normal.y == -1 then
 		self:land()
 	elseif collision.normal.y == 1 then
@@ -308,8 +308,6 @@ function PlayerController:onCollide(collision)
 end
 
 function PlayerController:drawAfter()
-	-- self.hitbox:draw()
-
 	love.graphics.setColor(255, 255, 255)
 	love.graphics.setFont(fonts.main)
 	love.graphics.printf(self.state, math.floor(self.entity.position.x - 40), math.floor(self.entity.position.y - 30), 80, "center")

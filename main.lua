@@ -41,6 +41,12 @@ function resizeWindow(factor)
 	})
 end
 
+function addEntity(entity)
+	if StateManager.current().addEntity then
+		StateManager.current():addEntity(entity)
+	end
+end
+
 function love.load(arg)
 	tick.framerate = 60
 	tick.rate = 1/60

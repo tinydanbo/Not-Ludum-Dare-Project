@@ -9,7 +9,19 @@ Entity = Class{
 }
 
 function Entity:move(movement)
-	self.position = self.position + movement
+	local moved_indirect = false
+	for k,v in pairs(self.components) do
+		if v.tryMove then
+			moved_indirect = true
+			local actual_x, actual_y = v:tryMove(movement)
+			self.position.x = actual_x
+			self.position.y = actual_y
+		end
+	end
+
+	if not moved_indirect then
+		self.position = self.position + movement
+	end
 end
 
 function Entity:broadcastEvent(event, ...)
@@ -31,6 +43,12 @@ function Entity:getComponent(key)
 end
 
 function Entity:destroy()
+	for k,v in pairs(self.components) do
+		if v.onDestroy then
+			v:onDestroy()
+		end
+	end
+	
 	self.isDestroyed = true
 end
 

@@ -38,6 +38,10 @@ function game:draw()
 	self.camera:detach()
 end
 
+function game:addEntity(entity)
+	self.manager:add(entity)
+end
+
 function game:onAction(action)
 	self.player:onAction(action)
 end
