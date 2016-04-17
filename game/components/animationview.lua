@@ -23,6 +23,10 @@ function AnimationView:getFrame()
 	return self.animationSet:getFrame()
 end
 
+function AnimationView:goToRandomTime()
+	return self.animationSet:goToRandomTime()
+end
+
 function AnimationView:setOffset(x, y)
 	self.ox = x
 	self.oy = y

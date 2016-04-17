@@ -1,9 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" renderorder="right-down" width="50" height="15" tilewidth="16" tileheight="16" nextobjectid="1">
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="50" height="15" tilewidth="16" tileheight="16" nextobjectid="15">
  <tileset firstgid="1" source="test_tileset.tsx"/>
  <layer name="Tile Layer 1" width="50" height="15">
   <data encoding="base64" compression="zlib">
    eJzllFEOwCAIQ9H7H3o/W2IaWhBNljmS/iggD5VmZu0Qfd3+yrHK3W9FayreM1WXl//xnzk7ytkt/947COuK/B+NHBWrcmD/sJ6qVE92yuvfeK6qq6o3OLCHBvvMn1nWl/lFsVhntF/9vxjPcq1ysP8c3Rf6RfkxF8ZlONQ/n+FQb3+Gw5w4NRsya8jscYyW5fB81VxXM2EXR+U+GAebM2o2mePD8jCOE3QB5j4CLg==
   </data>
  </layer>
+ <objectgroup name="Entities">
+  <object id="1" name="spinner" type="spinner" x="304" y="80" width="208" height="16"/>
+  <object id="2" name="spinner" type="spinner" x="32" y="80" width="128" height="16"/>
+  <object id="3" name="spinner" type="spinner" x="192" y="208" width="160" height="16"/>
+  <object id="4" name="lantern" type="lantern" x="560" y="16" width="32" height="48"/>
+  <object id="5" name="lantern" type="lantern" x="544" y="176" width="32" height="48"/>
+  <object id="6" name="lantern" type="lantern" x="32" y="144" width="48" height="48"/>
+  <object id="7" name="junk" type="junk" x="368" y="128" width="32" height="32"/>
+  <object id="8" name="junk" type="junk" x="592" y="128" width="32" height="32"/>
+  <object id="9" name="junk" type="junk" x="624" y="80" width="32" height="32"/>
+  <object id="12" name="junk" type="junk" x="752" y="144" width="32" height="32"/>
+  <object id="13" name="junk" type="junk" x="720" y="144" width="32" height="32"/>
+  <object id="14" name="junk" type="junk" x="176" y="16" width="32" height="32"/>
+ </objectgroup>
 </map>

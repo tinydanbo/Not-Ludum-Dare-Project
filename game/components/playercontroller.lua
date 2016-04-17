@@ -234,7 +234,7 @@ function PlayerController:attack()
 		self.state = "jumpattack"
 		self.animationView:switchAnimation("JumpAtk", true)
 		self.timer.after(6, function()
-			addEntity(PlayerMeleeAttack(self.entity, self.world, 18, 0, 16, 20, 20))
+			addEntity(PlayerMeleeAttack(self.entity, self.world, 18, 3, 16, 26, 20))
 		end)
 	elseif self.state == "dashing" then
 		self.state = "dashattack"

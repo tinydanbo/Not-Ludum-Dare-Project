@@ -34,6 +34,12 @@ function AnimationSet:switchAnimation(name, reset)
 	end
 end
 
+function AnimationSet:goToRandomTime()
+	local currentAnimation = self.animations[self.currentAnimationName]
+
+	currentAnimation.time = math.random(0, currentAnimation.length)
+end
+
 function AnimationSet:update()
 	local currentAnimation = self.animations[self.currentAnimationName]
 

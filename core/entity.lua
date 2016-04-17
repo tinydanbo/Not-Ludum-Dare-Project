@@ -54,7 +54,7 @@ end
 
 function Entity:update()
 	for k,v in pairs(self.components) do
-		if v.update then
+		if v.update and not self.isDestroyed then
 			v:update()
 		end
 	end

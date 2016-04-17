@@ -40,6 +40,11 @@ function SimpleCollision:tryMove(movement)
 			return "cross"
 		end
 
+		if (item.tag == "playerattack" and other.tag == "enemy") or
+			(item.tag == "enemy" and other.tag == "playerattack") then
+			return "cross"
+		end
+
 		if (item.tag == "playerattack" and other.tag == "playerattack") then
 			return "cross"
 		end
@@ -67,8 +72,8 @@ function SimpleCollision:tryMove(movement)
 end
 
 function SimpleCollision:draw()
-	-- love.graphics.setColor(255, 0, 255, 255)
-	-- love.graphics.rectangle("line", math.floor(self.l), math.floor(self.t), self.w, self.h)
+	love.graphics.setColor(255, 0, 255, 255)
+	love.graphics.rectangle("line", math.floor(self.l), math.floor(self.t), self.w, self.h)
 end
 
 return SimpleCollision
