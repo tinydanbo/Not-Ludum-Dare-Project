@@ -214,7 +214,7 @@ function PlayerController:jump()
 end
 
 function PlayerController:land()
-	if self.state == "jumping" or self.state == "falling" or self.state == "jumpattack" then
+	if self.state == "jumping" or self.state == "falling" then
 		self.animationView:switchAnimation("Land", true)
 		self.state = "walking"
 	end
@@ -227,14 +227,23 @@ function PlayerController:attack()
 	if self.state == "dashjumping" then
 		self.state = "dashjumpattack"
 		self.animationView:switchAnimation("JumpAtk", true)
+		self.timer.after(6, function()
+			addEntity(PlayerMeleeAttack(self.entity, self.world, 18, 0, 16, 20, 20))
+		end)
 	elseif self.state == "jumping" or self.state == "falling" then
 		self.state = "jumpattack"
 		self.animationView:switchAnimation("JumpAtk", true)
+		self.timer.after(6, function()
+			addEntity(PlayerMeleeAttack(self.entity, self.world, 18, 0, 16, 20, 20))
+		end)
 	elseif self.state == "dashing" then
 		self.state = "dashattack"
 		self.animationView:switchAnimation("DashAtk", true)
 		self.timer.clear()
 		self.timer.tween(30, self.velocity, {x = 0}, "linear")
+		self.timer.after(10, function()
+			addEntity(PlayerMeleeAttack(self.entity, self.world, 20, -2, 22, 14, 16))
+		end)
 		self.locked = true
 	elseif self.state == "walking" then
 		self.state = "attack1"
@@ -243,7 +252,7 @@ function PlayerController:attack()
 		self.locked = true
 		self.velocity.x = 0
 		self.timer.after(8, function()
-			addEntity(PlayerMeleeAttack(self.entity, self.world, 16 * self.orientation.x, 6, 20, 10, 16))
+			addEntity(PlayerMeleeAttack(self.entity, self.world, 16, 0, 24, 20, 12))
 		end)
 		self.timer.after(24, function()
 			self.locked = false
@@ -255,7 +264,7 @@ function PlayerController:attack()
 		self.locked = true
 		self.velocity.x = 0
 		self.timer.after(12, function()
-			addEntity(PlayerMeleeAttack(self.entity, self.world, 16 * self.orientation.x, 2, 24, 12, 12))
+			addEntity(PlayerMeleeAttack(self.entity, self.world, 16, 0, 24, 20, 12))
 		end)
 		self.timer.after(24, function()
 			self.locked = false
@@ -267,7 +276,7 @@ function PlayerController:attack()
 		self.locked = true
 		self.velocity.x = 0
 		self.timer.after(12, function()
-			addEntity(PlayerMeleeAttack(self.entity, self.world, 16 * self.orientation.x, -2, 24, 12, 12))
+			addEntity(PlayerMeleeAttack(self.entity, self.world, 16, 0, 24, 20, 12))
 		end)
 		self.timer.after(24, function()
 			self.locked = false
@@ -278,13 +287,17 @@ end
 function PlayerController:startWallGrab(normal_x)
 	if normal_x == -1 and love.keyboard.isDown(unpack(bindings.left)) then return end
 	if normal_x == 1 and love.keyboard.isDown(unpack(bindings.right)) then return end
-	if self.state == "falling" or self.state == "jumping" or self.state == "dashjumping" or self.state == "jumpattack" then
+	if self.state == "falling" or self.state == "jumping" or self.state == "dashjumping" then
 		self.wallgrabframes = 20
 		self.animationView:switchAnimation("Climb", true)
 		self.state = "wallgrab"
 		self.velocity.y = 0
 		self.wallgrabOrientation.x = normal_x
 	end
+end
+
+function PlayerController:getOrientation()
+	return self.orientation
 end
 
 function PlayerController:maintainWallGrab(normal_x)
@@ -311,7 +324,7 @@ function PlayerController:dash()
 	self.afterImageFrames = self.dashlength + 8
 end
 
-function PlayerController:onCollide(collision)
+function PlayerController:onCollide(entity, hitbox, collision)
 	if collision.item.tag and collision.other.tag then return end
 
 	if collision.normal.y == -1 then

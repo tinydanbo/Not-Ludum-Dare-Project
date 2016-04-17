@@ -24,8 +24,15 @@ end
 
 function SimpleCollision:tryMove(movement)
 	local actualX, actualY, cols, len = self.world:move(self, self.l + movement.x, self.t + movement.y, function(item, other)
-		if not item.tag or not other.tag then
+
+		if (item.tag == "player" and not other.tag) or
+			(not item.tag and other.tag == "player") then
 			return "slide"
+		end
+
+		if (item.tag == "playerattack" and not other.tag) or
+			(not item.tag and other.tag == "playerattack") then
+			return "cross"
 		end
 
 		if (item.tag == "player" and other.tag == "playerattack") or
@@ -41,7 +48,13 @@ function SimpleCollision:tryMove(movement)
 	end)
 
 	for i,v in ipairs(cols) do
-		self.entity:onCollide(v)
+		if v.item.entity then
+			v.item.entity:onCollide(v.other.entity, v.other, v)
+		end
+
+		if v.other.entity then
+			v.other.entity:onCollide(v.item.entity, v.item, v)
+		end
 	end
 
 	self.l = actualX
@@ -54,8 +67,8 @@ function SimpleCollision:tryMove(movement)
 end
 
 function SimpleCollision:draw()
-	-- love.graphics.setColor(255, 0, 0, 255)
-	-- love.graphics.rectangle("line", math.floor(self.l), math.floor(self.t), self.w, self.h)
+	-- love.graphics.setColor(255, 0, 255, 255)
+	--love.graphics.rectangle("line", math.floor(self.l), math.floor(self.t), self.w, self.h)
 end
 
 return SimpleCollision

@@ -4,6 +4,7 @@
  <tile id="0">
   <properties>
    <property name="collidable" value="true"/>
+   <property name="tag" value="world"/>
   </properties>
  </tile>
 </tileset>

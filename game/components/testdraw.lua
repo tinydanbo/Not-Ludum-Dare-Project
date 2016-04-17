@@ -1,23 +1,24 @@
 Class = require "lib.hump.class"
 
 TestDraw = Class{
-	init = function(self, entity)
+	init = function(self, entity, colors, width, height)
 		self.entity = entity
+		self.colors = colors
+		self.width = width
+		self.height = height
 	end
 }
 
-function TestDraw:draw(x, y, colors)
-	if not x and not y then
-		x,y = self.entity.position:unpack()
-	end
+function TestDraw:draw()
+	local x,y = self.entity.position:unpack()
 
-	if not colors then
+	if not self.colors then
 		love.graphics.setColor(80, 80, 80)
 	else
-		love.graphics.setColor(unpack(colors))
+		love.graphics.setColor(unpack(self.colors))
 	end
 
-	love.graphics.rectangle("fill", math.floor(x-8), math.floor(y-8), 16, 16)
+	love.graphics.rectangle("fill", math.floor(x-self.width/2), math.floor(y-self.height/2), self.width, self.height)
 end
 
 return TestDraw

@@ -15,7 +15,8 @@ PlayerMeleeAttack = Class{__includes = Entity,
 }
 
 function PlayerMeleeAttack:update()
-	local desiredPosition = self.parent.position + Vector(self.ox, self.oy)
+	local playerController = self.parent:getComponent("PlayerController")
+	local desiredPosition = self.parent.position + Vector(self.ox * playerController:getOrientation().x, self.oy)
 	local difference = desiredPosition - self.position
 
 	self:move(difference)

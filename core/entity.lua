@@ -80,10 +80,10 @@ function Entity:draw()
 	end
 end
 
-function Entity:onCollide(collision)
+function Entity:onCollide(entity, hitbox, collision)
 	for k,v in pairs(self.components) do
 		if v.onCollide then
-			v:onCollide(collision)
+			v:onCollide(entity, hitbox, collision)
 		end
 	end
 end
