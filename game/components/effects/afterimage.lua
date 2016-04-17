@@ -46,8 +46,8 @@ end
 function AfterImages:show()
 	self.timer.clear()
 	self.hidden = false
-	self.positionVariation = 0
-	self.timer.tween(15, self, {positionVariation = 1}, "in-quad")
+	self.positionVariation = 1
+	-- self.timer.tween(15, self, {positionVariation = 1}, "in-quad")
 end
 
 function AfterImages:hide()
@@ -70,7 +70,6 @@ function AfterImages:beforeDraw()
 			{0, 0, 200, v.opacity * 255}, frame.animation, frame.frame
 		)
 	end
-	print("--")
 end
 
 return AfterImages
