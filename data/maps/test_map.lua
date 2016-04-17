@@ -14,7 +14,6 @@ return {
     {
       name = "test_tileset",
       firstgid = 1,
-      filename = "test_tileset.tsx",
       tilewidth = 16,
       tileheight = 16,
       spacing = 0,
@@ -38,25 +37,227 @@ return {
           }
         }
       }
+    },
+    {
+      name = "tile_tower_1",
+      firstgid = 3,
+      tilewidth = 16,
+      tileheight = 16,
+      spacing = 0,
+      margin = 0,
+      image = "tile_tower_1.png",
+      imagewidth = 160,
+      imageheight = 384,
+      tileoffset = {
+        x = 0,
+        y = 0
+      },
+      properties = {},
+      terrains = {},
+      tilecount = 240,
+      tiles = {
+        {
+          id = 0,
+          properties = {
+            ["collidable"] = "true"
+          }
+        },
+        {
+          id = 1,
+          properties = {
+            ["collidable"] = "true"
+          }
+        },
+        {
+          id = 2,
+          properties = {
+            ["collidable"] = "true"
+          }
+        },
+        {
+          id = 3,
+          properties = {
+            ["collidable"] = "true"
+          }
+        },
+        {
+          id = 4,
+          properties = {
+            ["collidable"] = "true"
+          }
+        },
+        {
+          id = 5,
+          properties = {
+            ["collidable"] = "true"
+          }
+        },
+        {
+          id = 6,
+          properties = {
+            ["collidable"] = "true"
+          }
+        },
+        {
+          id = 7,
+          properties = {
+            ["collidable"] = "true"
+          }
+        },
+        {
+          id = 8,
+          properties = {
+            ["collidable"] = "true"
+          }
+        },
+        {
+          id = 9,
+          properties = {
+            ["collidable"] = "true"
+          }
+        },
+        {
+          id = 10,
+          properties = {
+            ["collidable"] = "true"
+          }
+        },
+        {
+          id = 11,
+          properties = {
+            ["collidable"] = "true"
+          }
+        },
+        {
+          id = 12,
+          properties = {
+            ["collidable"] = "true"
+          }
+        },
+        {
+          id = 13,
+          properties = {
+            ["collidable"] = "true"
+          }
+        },
+        {
+          id = 15,
+          properties = {
+            ["collidable"] = "true"
+          }
+        },
+        {
+          id = 16,
+          properties = {
+            ["collidable"] = "true"
+          }
+        },
+        {
+          id = 17,
+          properties = {
+            ["collidable"] = "true"
+          }
+        },
+        {
+          id = 18,
+          properties = {
+            ["collidable"] = "true"
+          }
+        },
+        {
+          id = 19,
+          properties = {
+            ["collidable"] = "true"
+          }
+        },
+        {
+          id = 20,
+          properties = {
+            ["collidable"] = "true"
+          }
+        },
+        {
+          id = 21,
+          properties = {
+            ["collidable"] = "true"
+          }
+        },
+        {
+          id = 22,
+          properties = {
+            ["collidable"] = "true"
+          }
+        },
+        {
+          id = 23,
+          properties = {
+            ["collidable"] = "true"
+          }
+        },
+        {
+          id = 25,
+          properties = {
+            ["collidable"] = "true"
+          }
+        },
+        {
+          id = 26,
+          properties = {
+            ["collidable"] = "true"
+          }
+        },
+        {
+          id = 27,
+          properties = {
+            ["collidable"] = "true"
+          }
+        },
+        {
+          id = 28,
+          properties = {
+            ["collidable"] = "true"
+          }
+        },
+        {
+          id = 29,
+          properties = {
+            ["collidable"] = "true"
+          }
+        },
+        {
+          id = 33,
+          properties = {
+            ["collidable"] = "true"
+          }
+        },
+        {
+          id = 35,
+          properties = {
+            ["collidable"] = "true"
+          }
+        },
+        {
+          id = 36,
+          properties = {
+            ["collidable"] = "true"
+          }
+        },
+        {
+          id = 37,
+          properties = {
+            ["collidable"] = "true"
+          }
+        },
+        {
+          id = 39,
+          properties = {
+            ["collidable"] = "true"
+          }
+        }
+      }
     }
   },
   layers = {
-    {
-      type = "tilelayer",
-      name = "Tile Layer 1",
-      x = 0,
-      y = 0,
-      width = 50,
-      height = 15,
-      visible = true,
-      opacity = 1,
-      offsetx = 0,
-      offsety = 0,
-      properties = {},
-      encoding = "base64",
-      compression = "zlib",
-      data = "eJzllFEOwCAIQ9H7H3o/W2IaWhBNljmS/iggD5VmZu0Qfd3+yrHK3W9FayreM1WXl//xnzk7ytkt/947COuK/B+NHBWrcmD/sJ6qVE92yuvfeK6qq6o3OLCHBvvMn1nWl/lFsVhntF/9vxjPcq1ysP8c3Rf6RfkxF8ZlONQ/n+FQb3+Gw5w4NRsya8jscYyW5fB81VxXM2EXR+U+GAebM2o2mePD8jCOE3QB5j4CLg=="
-    },
     {
       type = "objectgroup",
       name = "Entities",
@@ -223,6 +424,22 @@ return {
           properties = {}
         }
       }
+    },
+    {
+      type = "tilelayer",
+      name = "Copy of Tile Layer 1",
+      x = 0,
+      y = 0,
+      width = 50,
+      height = 15,
+      visible = true,
+      opacity = 1,
+      offsetx = 0,
+      offsety = 0,
+      properties = {},
+      encoding = "base64",
+      compression = "zlib",
+      data = "eJzllEsLwyAQhJe+6IM25xyaHNv//wtrwQEZdtZoDiV0YBDNru5n1IuZXTfuW/LZtq+T/SfHM3lasd4uuzYW5XuKOLz5X8nvxrVrc3772B9uVT7Pozg4Hp6zexgiDuwPt9CQzfWAFxxzo709aZ2jZZ0xm9cFLzjU/rf4FxxQea7K7ypeaWmsiqvlgkPFehxrz766iybGVG2lwKHuv3euPKn82t3hvCUcQ2Hm4PsfcXhW+RGHOXnMEdU8OmPM7HGUUu+bp+gsqf+B2qOaezl6/ofi4Dz078kPqpVrLMfUe+Vx7JMPG/cx+QOEVxXX"
     }
   }
 }

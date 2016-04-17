@@ -1,11 +1,182 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <map version="1.0" orientation="orthogonal" renderorder="right-down" width="50" height="15" tilewidth="16" tileheight="16" nextobjectid="15">
- <tileset firstgid="1" source="test_tileset.tsx"/>
- <layer name="Tile Layer 1" width="50" height="15">
-  <data encoding="base64" compression="zlib">
-   eJzllFEOwCAIQ9H7H3o/W2IaWhBNljmS/iggD5VmZu0Qfd3+yrHK3W9FayreM1WXl//xnzk7ytkt/947COuK/B+NHBWrcmD/sJ6qVE92yuvfeK6qq6o3OLCHBvvMn1nWl/lFsVhntF/9vxjPcq1ysP8c3Rf6RfkxF8ZlONQ/n+FQb3+Gw5w4NRsya8jscYyW5fB81VxXM2EXR+U+GAebM2o2mePD8jCOE3QB5j4CLg==
-  </data>
- </layer>
+ <tileset firstgid="1" name="test_tileset" tilewidth="16" tileheight="16" tilecount="2">
+  <image source="test_tileset.png" width="32" height="16"/>
+  <tile id="0">
+   <properties>
+    <property name="collidable" value="true"/>
+    <property name="tag" value="world"/>
+   </properties>
+  </tile>
+ </tileset>
+ <tileset firstgid="3" name="tile_tower_1" tilewidth="16" tileheight="16" tilecount="240">
+  <image source="tile_tower_1.png" width="160" height="384"/>
+  <tile id="0">
+   <properties>
+    <property name="collidable" value="true"/>
+   </properties>
+  </tile>
+  <tile id="1">
+   <properties>
+    <property name="collidable" value="true"/>
+   </properties>
+  </tile>
+  <tile id="2">
+   <properties>
+    <property name="collidable" value="true"/>
+   </properties>
+  </tile>
+  <tile id="3">
+   <properties>
+    <property name="collidable" value="true"/>
+   </properties>
+  </tile>
+  <tile id="4">
+   <properties>
+    <property name="collidable" value="true"/>
+   </properties>
+  </tile>
+  <tile id="5">
+   <properties>
+    <property name="collidable" value="true"/>
+   </properties>
+  </tile>
+  <tile id="6">
+   <properties>
+    <property name="collidable" value="true"/>
+   </properties>
+  </tile>
+  <tile id="7">
+   <properties>
+    <property name="collidable" value="true"/>
+   </properties>
+  </tile>
+  <tile id="8">
+   <properties>
+    <property name="collidable" value="true"/>
+   </properties>
+  </tile>
+  <tile id="9">
+   <properties>
+    <property name="collidable" value="true"/>
+   </properties>
+  </tile>
+  <tile id="10">
+   <properties>
+    <property name="collidable" value="true"/>
+   </properties>
+  </tile>
+  <tile id="11">
+   <properties>
+    <property name="collidable" value="true"/>
+   </properties>
+  </tile>
+  <tile id="12">
+   <properties>
+    <property name="collidable" value="true"/>
+   </properties>
+  </tile>
+  <tile id="13">
+   <properties>
+    <property name="collidable" value="true"/>
+   </properties>
+  </tile>
+  <tile id="15">
+   <properties>
+    <property name="collidable" value="true"/>
+   </properties>
+  </tile>
+  <tile id="16">
+   <properties>
+    <property name="collidable" value="true"/>
+   </properties>
+  </tile>
+  <tile id="17">
+   <properties>
+    <property name="collidable" value="true"/>
+   </properties>
+  </tile>
+  <tile id="18">
+   <properties>
+    <property name="collidable" value="true"/>
+   </properties>
+  </tile>
+  <tile id="19">
+   <properties>
+    <property name="collidable" value="true"/>
+   </properties>
+  </tile>
+  <tile id="20">
+   <properties>
+    <property name="collidable" value="true"/>
+   </properties>
+  </tile>
+  <tile id="21">
+   <properties>
+    <property name="collidable" value="true"/>
+   </properties>
+  </tile>
+  <tile id="22">
+   <properties>
+    <property name="collidable" value="true"/>
+   </properties>
+  </tile>
+  <tile id="23">
+   <properties>
+    <property name="collidable" value="true"/>
+   </properties>
+  </tile>
+  <tile id="25">
+   <properties>
+    <property name="collidable" value="true"/>
+   </properties>
+  </tile>
+  <tile id="26">
+   <properties>
+    <property name="collidable" value="true"/>
+   </properties>
+  </tile>
+  <tile id="27">
+   <properties>
+    <property name="collidable" value="true"/>
+   </properties>
+  </tile>
+  <tile id="28">
+   <properties>
+    <property name="collidable" value="true"/>
+   </properties>
+  </tile>
+  <tile id="29">
+   <properties>
+    <property name="collidable" value="true"/>
+   </properties>
+  </tile>
+  <tile id="33">
+   <properties>
+    <property name="collidable" value="true"/>
+   </properties>
+  </tile>
+  <tile id="35">
+   <properties>
+    <property name="collidable" value="true"/>
+   </properties>
+  </tile>
+  <tile id="36">
+   <properties>
+    <property name="collidable" value="true"/>
+   </properties>
+  </tile>
+  <tile id="37">
+   <properties>
+    <property name="collidable" value="true"/>
+   </properties>
+  </tile>
+  <tile id="39">
+   <properties>
+    <property name="collidable" value="true"/>
+   </properties>
+  </tile>
+ </tileset>
  <objectgroup name="Entities">
   <object id="1" name="spinner" type="spinner" x="304" y="80" width="208" height="16"/>
   <object id="2" name="spinner" type="spinner" x="32" y="80" width="128" height="16"/>
@@ -20,4 +191,9 @@
   <object id="13" name="junk" type="junk" x="720" y="144" width="32" height="32"/>
   <object id="14" name="junk" type="junk" x="176" y="16" width="32" height="32"/>
  </objectgroup>
+ <layer name="Copy of Tile Layer 1" width="50" height="15">
+  <data encoding="base64" compression="zlib">
+   eJzllEsLwyAQhJe+6IM25xyaHNv//wtrwQEZdtZoDiV0YBDNru5n1IuZXTfuW/LZtq+T/SfHM3lasd4uuzYW5XuKOLz5X8nvxrVrc3772B9uVT7Pozg4Hp6zexgiDuwPt9CQzfWAFxxzo709aZ2jZZ0xm9cFLzjU/rf4FxxQea7K7ypeaWmsiqvlgkPFehxrz766iybGVG2lwKHuv3euPKn82t3hvCUcQ2Hm4PsfcXhW+RGHOXnMEdU8OmPM7HGUUu+bp+gsqf+B2qOaezl6/ofi4Dz078kPqpVrLMfUe+Vx7JMPG/cx+QOEVxXX
+  </data>
+ </layer>
 </map>
