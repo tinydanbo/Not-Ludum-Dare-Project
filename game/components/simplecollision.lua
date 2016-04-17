@@ -54,8 +54,8 @@ function SimpleCollision:tryMove(movement)
 end
 
 function SimpleCollision:draw()
-	love.graphics.setColor(255, 0, 0, 255)
-	love.graphics.rectangle("line", math.floor(self.l), math.floor(self.t), self.w, self.h)
+	-- love.graphics.setColor(255, 0, 0, 255)
+	-- love.graphics.rectangle("line", math.floor(self.l), math.floor(self.t), self.w, self.h)
 end
 
 return SimpleCollision

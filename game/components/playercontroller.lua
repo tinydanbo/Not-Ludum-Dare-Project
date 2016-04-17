@@ -153,6 +153,10 @@ function PlayerController:receiveEvent(event, animationName)
 		elseif animationName == "Attack3" then
 			self.state = "walking"
 			self.animationView:switchAnimation("Idle", true)
+		elseif animationName == "DashAtk" then
+			self.state = "walking"
+			self.animationView:switchAnimation("Idle", true)
+			self.locked = false
 		end
 	end
 end
@@ -217,7 +221,13 @@ end
 function PlayerController:attack()
 	if self.locked then return end
 
-	if self.state == "walking" then
+	if self.state == "dashing" then
+		self.state = "dashattack"
+		self.animationView:switchAnimation("DashAtk", true)
+		self.timer.clear()
+		self.timer.tween(30, self.velocity, {x = 0}, "linear")
+		self.locked = true
+	elseif self.state == "walking" then
 		self.state = "attack1"
 		self.animationView:switchAnimation("Attack1", true)
 		self.timer.clear()
@@ -274,10 +284,10 @@ function PlayerController:maintainWallGrab(normal_x)
 end
 
 function PlayerController:dash()
-	if self.locked then return end
-	if self.state == "dashing" or self.state == "jumping" or self.state == "falling" or self.state == "wallgrab" then return end
+	if self.state == "dashing" or self.state == "jumping" or self.state == "falling" or self.state == "wallgrab" or self.state == "dashattack" then return end
 
 	self.state = "dashing"
+	self.locked = false
 	self.animationView:switchAnimation("Dash", true)
 	self.velocity.y = 0 -- math.max(self.velocity.y, 0)
 	self.velocity.x = self.maxspeed * 2 * self.orientation.x
