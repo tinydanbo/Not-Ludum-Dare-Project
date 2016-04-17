@@ -426,7 +426,7 @@
 					"gline": [],
 					"id": 4,
 					"interval": 100,
-					"length": 720,
+					"length": 500,
 					"looping": "false",
 					"mainline": {
 						"key": [
@@ -665,8 +665,8 @@
 				{
 					"gline": [],
 					"id": 5,
-					"interval": 100,
-					"length": 1000,
+					"interval": 16,
+					"length": 80,
 					"mainline": {
 						"key": [
 							{
@@ -1043,8 +1043,8 @@
 				{
 					"gline": [],
 					"id": 8,
-					"interval": 100,
-					"length": 1000,
+					"interval": 16,
+					"length": 160,
 					"looping": "false",
 					"mainline": {
 						"key": [
@@ -1085,8 +1085,8 @@
 				{
 					"gline": [],
 					"id": 9,
-					"interval": 100,
-					"length": 1000,
+					"interval": 16,
+					"length": 560,
 					"looping": "false",
 					"mainline": {
 						"key": [
@@ -1125,7 +1125,7 @@
 										"z_index": "1"
 									}
 								],
-								"time": 165
+								"time": 160
 							},
 							{
 								"bone_ref": [],
@@ -1144,7 +1144,7 @@
 										"z_index": "1"
 									}
 								],
-								"time": 264
+								"time": 256
 							},
 							{
 								"bone_ref": [],
@@ -1163,7 +1163,7 @@
 										"z_index": "1"
 									}
 								],
-								"time": 363
+								"time": 352
 							},
 							{
 								"bone_ref": [],
@@ -1176,7 +1176,7 @@
 										"z_index": "0"
 									}
 								],
-								"time": 462
+								"time": 448
 							}
 						]
 					},
@@ -1210,7 +1210,7 @@
 										"x": -2
 									},
 									"spin": 0,
-									"time": 165
+									"time": 160
 								},
 								{
 									"id": 1,
@@ -1221,7 +1221,7 @@
 										"x": -2
 									},
 									"spin": 0,
-									"time": 264
+									"time": 256
 								},
 								{
 									"id": 2,
@@ -1232,7 +1232,7 @@
 										"x": -2
 									},
 									"spin": 0,
-									"time": 363
+									"time": 352
 								},
 								{
 									"id": 3,
@@ -1243,7 +1243,7 @@
 										"x": -2
 									},
 									"spin": 0,
-									"time": 462
+									"time": 448
 								}
 							],
 							"name": "8"
@@ -1279,7 +1279,7 @@
 										"y": 4
 									},
 									"spin": 0,
-									"time": 165
+									"time": 160
 								}
 							],
 							"name": "e2"
@@ -1297,7 +1297,7 @@
 										"y": 4
 									},
 									"spin": 0,
-									"time": 264
+									"time": 256
 								}
 							],
 							"name": "e3"
@@ -1315,7 +1315,7 @@
 										"y": 4
 									},
 									"spin": 0,
-									"time": 363
+									"time": 352
 								}
 							],
 							"name": "e4"
@@ -1325,8 +1325,8 @@
 				{
 					"gline": [],
 					"id": 10,
-					"interval": 100,
-					"length": 1000,
+					"interval": 16,
+					"length": 560,
 					"looping": "false",
 					"mainline": {
 						"key": [
@@ -1359,7 +1359,7 @@
 										"z_index": "1"
 									}
 								],
-								"time": 165
+								"time": 160
 							},
 							{
 								"bone_ref": [],
@@ -1378,7 +1378,7 @@
 										"z_index": "1"
 									}
 								],
-								"time": 264
+								"time": 256
 							},
 							{
 								"bone_ref": [],
@@ -1397,7 +1397,7 @@
 										"z_index": "1"
 									}
 								],
-								"time": 363
+								"time": 352
 							},
 							{
 								"bone_ref": [],
@@ -1410,7 +1410,7 @@
 										"z_index": "0"
 									}
 								],
-								"time": 462
+								"time": 448
 							}
 						]
 					},
@@ -1427,7 +1427,7 @@
 										"folder": 0
 									},
 									"spin": 0,
-									"time": 165
+									"time": 160
 								},
 								{
 									"id": 1,
@@ -1437,7 +1437,7 @@
 										"folder": 0
 									},
 									"spin": 0,
-									"time": 264
+									"time": 256
 								},
 								{
 									"id": 2,
@@ -1447,7 +1447,7 @@
 										"folder": 0
 									},
 									"spin": 0,
-									"time": 363
+									"time": 352
 								},
 								{
 									"id": 3,
@@ -1457,7 +1457,7 @@
 										"folder": 0
 									},
 									"spin": 0,
-									"time": 462
+									"time": 448
 								}
 							],
 							"name": "9"
@@ -1493,7 +1493,7 @@
 										"y": 8
 									},
 									"spin": 0,
-									"time": 165
+									"time": 160
 								}
 							],
 							"name": "e5"
@@ -1511,7 +1511,7 @@
 										"y": 7
 									},
 									"spin": 0,
-									"time": 264
+									"time": 256
 								}
 							],
 							"name": "e6"
@@ -1529,7 +1529,7 @@
 										"y": 6
 									},
 									"spin": 0,
-									"time": 363
+									"time": 352
 								}
 							],
 							"name": "e7"
@@ -1539,8 +1539,8 @@
 				{
 					"gline": [],
 					"id": 11,
-					"interval": 100,
-					"length": 1000,
+					"interval": 16,
+					"length": 560,
 					"looping": "false",
 					"mainline": {
 						"key": [
@@ -1579,7 +1579,7 @@
 										"z_index": "1"
 									}
 								],
-								"time": 165
+								"time": 160
 							},
 							{
 								"bone_ref": [],
@@ -1598,7 +1598,7 @@
 										"z_index": "1"
 									}
 								],
-								"time": 264
+								"time": 256
 							},
 							{
 								"bone_ref": [],
@@ -1617,7 +1617,7 @@
 										"z_index": "1"
 									}
 								],
-								"time": 363
+								"time": 352
 							},
 							{
 								"bone_ref": [],
@@ -1630,7 +1630,7 @@
 										"z_index": "0"
 									}
 								],
-								"time": 462
+								"time": 448
 							}
 						]
 					},
@@ -1664,7 +1664,7 @@
 										"x": -1
 									},
 									"spin": 0,
-									"time": 165
+									"time": 160
 								},
 								{
 									"id": 1,
@@ -1675,7 +1675,7 @@
 										"x": -1
 									},
 									"spin": 0,
-									"time": 264
+									"time": 256
 								},
 								{
 									"id": 2,
@@ -1686,7 +1686,7 @@
 										"x": -1
 									},
 									"spin": 0,
-									"time": 363
+									"time": 352
 								},
 								{
 									"id": 3,
@@ -1697,7 +1697,7 @@
 										"x": -1
 									},
 									"spin": 0,
-									"time": 462
+									"time": 448
 								}
 							],
 							"name": "11"
@@ -1732,7 +1732,7 @@
 										"y": 13
 									},
 									"spin": 0,
-									"time": 165
+									"time": 160
 								}
 							],
 							"name": "e8"
@@ -1750,7 +1750,7 @@
 										"y": 12
 									},
 									"spin": 0,
-									"time": 264
+									"time": 256
 								}
 							],
 							"name": "e9"
@@ -1768,7 +1768,7 @@
 										"y": 11
 									},
 									"spin": 0,
-									"time": 363
+									"time": 352
 								}
 							],
 							"name": "e10"
@@ -1778,8 +1778,8 @@
 				{
 					"gline": [],
 					"id": 12,
-					"interval": 100,
-					"length": 1000,
+					"interval": 16,
+					"length": 80,
 					"mainline": {
 						"key": [
 							{
