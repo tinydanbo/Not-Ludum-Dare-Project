@@ -1,0 +1,267 @@
+{
+	"entity": [
+		{
+			"animation": [
+				{
+					"gline": [],
+					"id": 0,
+					"interval": 16,
+					"length": 1000,
+					"mainline": {
+						"key": [
+							{
+								"bone_ref": [],
+								"id": 0,
+								"object_ref": [
+									{
+										"id": 0,
+										"key": 0,
+										"timeline": "0",
+										"z_index": "0"
+									}
+								]
+							},
+							{
+								"bone_ref": [],
+								"curve_type": "instant",
+								"id": 1,
+								"object_ref": [
+									{
+										"id": 0,
+										"key": 0,
+										"timeline": "1",
+										"z_index": "0"
+									}
+								],
+								"time": 240
+							},
+							{
+								"bone_ref": [],
+								"id": 2,
+								"object_ref": [
+									{
+										"id": 0,
+										"key": 0,
+										"timeline": "2",
+										"z_index": "0"
+									}
+								],
+								"time": 320
+							},
+							{
+								"bone_ref": [],
+								"id": 3,
+								"object_ref": [
+									{
+										"id": 0,
+										"key": 0,
+										"timeline": "3",
+										"z_index": "0"
+									}
+								],
+								"time": 400
+							},
+							{
+								"bone_ref": [],
+								"id": 4,
+								"object_ref": [
+									{
+										"id": 0,
+										"key": 1,
+										"timeline": "2",
+										"z_index": "0"
+									}
+								],
+								"time": 640
+							},
+							{
+								"bone_ref": [],
+								"id": 5,
+								"object_ref": [
+									{
+										"id": 0,
+										"key": 1,
+										"timeline": "1",
+										"z_index": "0"
+									}
+								],
+								"time": 720
+							},
+							{
+								"bone_ref": [],
+								"id": 6,
+								"object_ref": [
+									{
+										"id": 0,
+										"key": 2,
+										"timeline": "2",
+										"z_index": "0"
+									}
+								],
+								"time": 800
+							},
+							{
+								"bone_ref": [],
+								"id": 7,
+								"object_ref": [
+									{
+										"id": 0,
+										"key": 2,
+										"timeline": "1",
+										"z_index": "0"
+									}
+								],
+								"time": 928
+							}
+						]
+					},
+					"name": "Idle",
+					"timeline": [
+						{
+							"id": 0,
+							"key": [
+								{
+									"id": 0,
+									"object": {
+										"file": 0,
+										"folder": 0
+									},
+									"spin": 0
+								}
+							],
+							"name": "1"
+						},
+						{
+							"id": 1,
+							"key": [
+								{
+									"id": 0,
+									"object": {
+										"file": 2,
+										"folder": 0
+									},
+									"spin": 0,
+									"time": 240
+								},
+								{
+									"id": 1,
+									"object": {
+										"file": 2,
+										"folder": 0
+									},
+									"spin": 0,
+									"time": 720
+								},
+								{
+									"id": 2,
+									"object": {
+										"file": 2,
+										"folder": 0
+									},
+									"spin": 0,
+									"time": 928
+								}
+							],
+							"name": "2"
+						},
+						{
+							"id": 2,
+							"key": [
+								{
+									"id": 0,
+									"object": {
+										"file": 3,
+										"folder": 0
+									},
+									"spin": 0,
+									"time": 320
+								},
+								{
+									"id": 1,
+									"object": {
+										"file": 3,
+										"folder": 0
+									},
+									"spin": 0,
+									"time": 640
+								},
+								{
+									"id": 2,
+									"object": {
+										"file": 3,
+										"folder": 0
+									},
+									"spin": 0,
+									"time": 800
+								}
+							],
+							"name": "3"
+						},
+						{
+							"id": 3,
+							"key": [
+								{
+									"id": 0,
+									"object": {
+										"file": 1,
+										"folder": 0
+									},
+									"spin": 0,
+									"time": 400
+								}
+							],
+							"name": "4"
+						}
+					]
+				}
+			],
+			"character_map": [],
+			"id": 0,
+			"name": "Junk Block",
+			"obj_info": []
+		}
+	],
+	"folder": [
+		{
+			"file": [
+				{
+					"height": 32,
+					"id": 0,
+					"name": "1.png",
+					"pivot_x": 0.5,
+					"pivot_y": 0,
+					"width": 32
+				},
+				{
+					"height": 32,
+					"id": 1,
+					"name": "4.png",
+					"pivot_x": 0.5,
+					"pivot_y": 0,
+					"width": 32
+				},
+				{
+					"height": 32,
+					"id": 2,
+					"name": "2.png",
+					"pivot_x": 0.5,
+					"pivot_y": 0,
+					"width": 32
+				},
+				{
+					"height": 32,
+					"id": 3,
+					"name": "3.png",
+					"pivot_x": 0.5,
+					"pivot_y": 0,
+					"width": 32
+				}
+			],
+			"id": 0
+		}
+	],
+	"generator": "BrashMonkey Spriter",
+	"generator_version": "r7",
+	"pixel_mode": 1,
+	"scon_version": "1.0"
+}

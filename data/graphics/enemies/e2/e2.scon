@@ -1,0 +1,196 @@
+{
+	"entity": [
+		{
+			"animation": [
+				{
+					"gline": [],
+					"id": 0,
+					"interval": 16,
+					"length": 1000,
+					"mainline": {
+						"key": [
+							{
+								"bone_ref": [],
+								"id": 0,
+								"object_ref": [
+									{
+										"id": 0,
+										"key": 0,
+										"timeline": "0",
+										"z_index": "0"
+									}
+								]
+							}
+						]
+					},
+					"name": "Normal",
+					"timeline": [
+						{
+							"id": 0,
+							"key": [
+								{
+									"id": 0,
+									"object": {
+										"file": 0,
+										"folder": 0
+									},
+									"spin": 0
+								}
+							],
+							"name": "1"
+						}
+					]
+				},
+				{
+					"gline": [],
+					"id": 1,
+					"interval": 16,
+					"length": 96,
+					"mainline": {
+						"key": [
+							{
+								"bone_ref": [],
+								"id": 0,
+								"object_ref": [
+									{
+										"id": 0,
+										"key": 0,
+										"timeline": "0",
+										"z_index": "0"
+									}
+								]
+							},
+							{
+								"bone_ref": [],
+								"curve_type": "instant",
+								"id": 1,
+								"object_ref": [
+									{
+										"id": 0,
+										"key": 0,
+										"timeline": "1",
+										"z_index": "0"
+									}
+								],
+								"time": 48
+							}
+						]
+					},
+					"name": "Charging",
+					"timeline": [
+						{
+							"id": 0,
+							"key": [
+								{
+									"id": 0,
+									"object": {
+										"file": 0,
+										"folder": 0,
+										"x": 0.2298850574712644,
+										"y": 0.4597701149425288
+									},
+									"spin": 0
+								}
+							],
+							"name": "1_000"
+						},
+						{
+							"id": 1,
+							"key": [
+								{
+									"id": 0,
+									"object": {
+										"file": 1,
+										"folder": 0
+									},
+									"spin": 0,
+									"time": 48
+								}
+							],
+							"name": "2"
+						}
+					]
+				},
+				{
+					"gline": [],
+					"id": 2,
+					"interval": 16,
+					"length": 1000,
+					"mainline": {
+						"key": [
+							{
+								"bone_ref": [],
+								"id": 0,
+								"object_ref": [
+									{
+										"id": 0,
+										"key": 0,
+										"timeline": "0",
+										"z_index": "0"
+									}
+								]
+							}
+						]
+					},
+					"name": "Burnt",
+					"timeline": [
+						{
+							"id": 0,
+							"key": [
+								{
+									"id": 0,
+									"object": {
+										"file": 2,
+										"folder": 0,
+										"y": 0.12738853503184713
+									},
+									"spin": 0
+								}
+							],
+							"name": "3"
+						}
+					]
+				}
+			],
+			"character_map": [],
+			"id": 0,
+			"name": "Lantern",
+			"obj_info": []
+		}
+	],
+	"folder": [
+		{
+			"file": [
+				{
+					"height": 22,
+					"id": 0,
+					"name": "1.png",
+					"pivot_x": 0.5,
+					"pivot_y": 0,
+					"width": 24
+				},
+				{
+					"height": 22,
+					"id": 1,
+					"name": "2.png",
+					"pivot_x": 0.5,
+					"pivot_y": 0,
+					"width": 24
+				},
+				{
+					"height": 22,
+					"id": 2,
+					"name": "3.png",
+					"pivot_x": 0.5,
+					"pivot_y": 0,
+					"width": 24
+				}
+			],
+			"id": 0
+		}
+	],
+	"generator": "BrashMonkey Spriter",
+	"generator_version": "r7",
+	"pixel_mode": 1,
+	"scon_version": "1.0"
+}
