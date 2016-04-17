@@ -251,10 +251,10 @@ function PlayerController:attack()
 		self.timer.clear()
 		self.locked = true
 		self.velocity.x = 0
-		self.timer.after(8, function()
-			addEntity(PlayerMeleeAttack(self.entity, self.world, 16, 0, 24, 20, 12))
+		self.timer.after(4, function()
+			addEntity(PlayerMeleeAttack(self.entity, self.world, 16, 0, 24, 20, 16))
 		end)
-		self.timer.after(24, function()
+		self.timer.after(16, function()
 			self.locked = false
 		end)
 	elseif self.state == "attack1" then
@@ -263,10 +263,10 @@ function PlayerController:attack()
 		self.timer.clear()
 		self.locked = true
 		self.velocity.x = 0
-		self.timer.after(12, function()
-			addEntity(PlayerMeleeAttack(self.entity, self.world, 16, 0, 24, 20, 12))
+		self.timer.after(4, function()
+			addEntity(PlayerMeleeAttack(self.entity, self.world, 16, 0, 24, 20, 16))
 		end)
-		self.timer.after(24, function()
+		self.timer.after(16, function()
 			self.locked = false
 		end)
 	elseif self.state == "attack2" then
@@ -275,10 +275,10 @@ function PlayerController:attack()
 		self.timer.clear()
 		self.locked = true
 		self.velocity.x = 0
-		self.timer.after(12, function()
-			addEntity(PlayerMeleeAttack(self.entity, self.world, 16, 0, 24, 20, 12))
+		self.timer.after(4, function()
+			addEntity(PlayerMeleeAttack(self.entity, self.world, 16, 0, 24, 20, 16))
 		end)
-		self.timer.after(24, function()
+		self.timer.after(16, function()
 			self.locked = false
 		end)
 	end
