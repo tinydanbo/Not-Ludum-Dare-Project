@@ -14,6 +14,10 @@ Player = Class{__includes = Entity,
 		self:addComponent("AfterImage", AfterImage(self))
 		self:addComponent("PlayerController", PlayerController(self, world))
 		self:addComponent("SimpleCollision", SimpleCollision(self, "player", world, 12, 20))
+
+		local animationViewer = self:getComponent("AnimationView")
+		animationViewer:setAnimationOffset("Climb", 6, 0)
+		animationViewer:setAnimationOffset("ClimbCling", 6, 0)
 	end
 }
 

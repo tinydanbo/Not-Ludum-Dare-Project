@@ -173,7 +173,7 @@ function PlayerController:update()
 			elseif desiredMovement.x == 0 then
 				self.state = "falling"
 				self.entity:move(Vector(self.wallgrabOrientation.x, 0))
-				self.orientation.x = self.orientation.x * -1
+				self.orientation.x = self.wallgrabOrientation.x
 				self.animationView:switchAnimation("Jump", true)
 			else
 				local collisionComponent = self.entity:getComponent("SimpleCollision")
@@ -298,14 +298,6 @@ function PlayerController:setAnimation()
 
 	if animationView:getAnimationName() == "Idle" then
 		animationView:setOffset(0, 11)
-	end
-
-	if animationView:getAnimationName() == "Climb" or animationView:getAnimationName() == "ClimbCling" then
-		if self.orientation.x > 0 then
-			animationView:setOffset(6, 11)
-		else
-			animationView:setOffset(-6, 11)
-		end
 	end
 
 	animationView:setFlip(shouldFlip)

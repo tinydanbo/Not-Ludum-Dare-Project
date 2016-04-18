@@ -90,7 +90,7 @@ function love.keyreleased(key)
 	end
 
 	if key == "tab" then
-		tick.timescale = 0.25
+		tick.timescale = 0.1
 	end
 end
 

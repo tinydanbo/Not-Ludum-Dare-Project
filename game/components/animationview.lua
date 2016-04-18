@@ -8,12 +8,19 @@ AnimationView = Class{
 		self.oy = oy
 		self.animationSet = AnimationSet(folder, filename)
 		self.animationSet:switchAnimation(initial_animation, true)
+		self.flip = false
+
+		self.animationOffsets = {}
 
 		self.animationSet.onLoop = function(animationName)
 			self.entity:broadcastEvent("animation loop", animationName)
 		end
 	end
 }
+
+function AnimationView:setAnimationOffset(name, x, y)
+	self.animationOffsets[name] = {x = x, y = y}
+end
 
 function AnimationView:getAnimationName()
 	return self.animationSet:getCurrentAnimationName()
@@ -41,6 +48,7 @@ function AnimationView:update()
 end
 
 function AnimationView:setFlip(flip)
+	self.flip = flip
 	self.animationSet:setFlip(flip)
 end
 
@@ -51,6 +59,18 @@ function AnimationView:draw(x, y, colors, animation_name, frame)
 
 	x = x + self.ox
 	y = y + self.oy
+
+	local currentAnimation = self:getAnimationName()
+
+	if self.animationOffsets[currentAnimation] then
+		local currentAnimationOffset = self.animationOffsets[currentAnimation]
+		if self.flip then
+			x = x - currentAnimationOffset.x
+		else
+			x = x + currentAnimationOffset.x
+		end
+		y = y + currentAnimationOffset.y
+	end
 
 	if colors then
 		love.graphics.setColor(unpack(colors))
