@@ -222,11 +222,6 @@ function PlayerController:update()
 		self.state = "falling"
 	end
 
-	if (self.state == "walking") and self.velocity.y > 0.5 then
-		self.state = "falling"
-		self.animationView:switchAnimation("Jump", true)
-	end
-
 	self:setAnimation()
 
 	if self.attackBuffer then
@@ -254,6 +249,12 @@ function PlayerController:update()
 	end
 
 	self.entity:move(self.velocity)
+
+	local collisionComponent = self.entity:getComponent("SimpleCollision")
+	if (self.state == "walking") and not collisionComponent:query(0, 1) then
+		self.state = "falling"
+		self.animationView:switchAnimation("Jump", true)
+	end
 end
 
 function PlayerController:receiveEvent(event, animationName)

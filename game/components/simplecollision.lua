@@ -71,6 +71,22 @@ function SimpleCollision:tryMove(movement)
 	return entityX, entityY
 end
 
+function SimpleCollision:query(x, y)
+	local items, len = self.world:queryRect(self.l + x, self.t + y, self.w, self.h, function(item)
+		if item == self then 
+			return false 
+		else 
+			return true
+		end
+	end)
+
+	if len > 0 then
+		return true
+	else
+		return false
+	end
+end
+
 function SimpleCollision:draw()
 	love.graphics.setLineWidth(0.5)
 	love.graphics.setColor(255, 0, 255, 255)
