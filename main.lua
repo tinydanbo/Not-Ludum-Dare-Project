@@ -88,6 +88,10 @@ function love.keyreleased(key)
 	else
 		StateManager.keyreleased(key)
 	end
+
+	if key == "tab" then
+		tick.timescale = 0.25
+	end
 end
 
 function keyToAction(key)

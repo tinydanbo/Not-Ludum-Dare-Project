@@ -357,9 +357,7 @@ end
 
 function PlayerController:attack()
 	if self.attackLock > 0 then
-		if self.state == "walking" or self.state == "attack1" or self.state == "attack2" then
-			self.attackBuffer = true
-		end
+		self.attackBuffer = true
 		return
 	else
 		self.attackBuffer = false
