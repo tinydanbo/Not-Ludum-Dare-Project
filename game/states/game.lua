@@ -65,9 +65,9 @@ end
 
 function game:update()
 	self.timer.update(1)
-	local player_x_look = math.floor(self.player.position.x) + 200
-	local clamped_x_look = math.min(math.max(400, player_x_look), 800)
-	self.camera:lookAt(clamped_x_look, 240)
+	local player_x_look = math.floor(self.player.position.x) + ((GAME_SCALE - 1)*200)
+	local clamped_x_look = math.min(math.max(GAME_SCALE*200, player_x_look), 600 + ((GAME_SCALE-1)*200))
+	self.camera:lookAt(clamped_x_look, (GAME_SCALE * 120))
 	self.manager:update()
 end
 

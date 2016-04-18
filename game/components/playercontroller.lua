@@ -268,7 +268,7 @@ function PlayerController:receiveEvent(event, animationName)
 		elseif animationName == "DashRecov" then
 			self.animationView:switchAnimation("Idle", true)
 		elseif animationName == "ClimbCling" then
-			self.animationView:switchAnimation("Jump", true)
+			self.animationView:switchAnimation("Climb", true)
 		elseif animationName == "Attack1" then
 			self.state = "walking"
 			self.animationView:switchAnimation("Idle", true)
@@ -379,7 +379,7 @@ function PlayerController:startWallGrab(normal_x)
 	if normal_x == 1 and love.keyboard.isDown(unpack(bindings.right)) then return end
 	if self.state == "falling" or self.state == "jumping" or self.state == "dashjumping" then
 		self.wallgrabframes = 20
-		self.animationView:switchAnimation("Climb", true)
+		self.animationView:switchAnimation("ClimbCling", true)
 		self.state = "wallgrab"
 		self.velocity.y = 0
 		self.wallgrabOrientation.x = normal_x

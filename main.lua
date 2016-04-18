@@ -26,6 +26,8 @@ bindings = {
 	special = {"l", "c"}
 }
 
+GAME_SCALE = 1
+
 function getScaling()
 	local width_scale = love.graphics.getWidth() / 400
 	local height_scale = love.graphics.getHeight() / 240
@@ -34,6 +36,7 @@ function getScaling()
 end
 
 function resizeWindow(factor)
+	GAME_SCALE = factor
 	local display = love.window.getDisplayCount()
 	love.window.setMode(400 * factor, 240 * factor, {
 		vsync = true,
