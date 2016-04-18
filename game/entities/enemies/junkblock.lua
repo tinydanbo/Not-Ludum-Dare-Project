@@ -8,7 +8,7 @@ JunkBlock = Class{__includes = Entity,
 		Entity.init(self, x, y)
 
 		self:addComponent("AnimationView", AnimationView(self, 0, 16, "data/graphics/enemies/e3", "e3.scon", "Idle"))
-		self:addComponent("SimpleCollision", SimpleCollision(self, "enemy", world, 30, 30))
+		self:addComponent("SimpleCollision", SimpleCollision(self, "enemy", world, 32, 32))
 		self:addComponent("JunkBlockController", JunkBlockController(self))
 
 		self:getComponent("AnimationView"):goToRandomTime()

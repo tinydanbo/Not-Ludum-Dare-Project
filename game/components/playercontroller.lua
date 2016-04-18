@@ -415,7 +415,7 @@ function PlayerController:dash()
 end
 
 function PlayerController:onCollide(entity, hitbox, collision)
-	if collision.item.tag and collision.other.tag then return end
+	if hitbox.tag and hitbox.tag ~= "enemy" then return end
 
 	if collision.normal.y == -1 then
 		self:land()
