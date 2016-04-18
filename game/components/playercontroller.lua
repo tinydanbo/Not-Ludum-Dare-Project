@@ -7,6 +7,7 @@ PlayerController = Class{
 	init = function(self, entity, world)
 		self.entity = entity
 		self.timer = Timer.new()
+		self.attackTimer = Timer.new()
 		self.velocity = Vector(0, 0)
 
 		self.speed = 0.9
@@ -28,6 +29,115 @@ PlayerController = Class{
 
 		self.state = "falling"
 
+		self.attacks = {
+			attack1 = {
+				animation = "Attack1",
+				movementLockFrames = 16,
+				attackLockFrames = 12,
+				velocityMultiplier = Vector(0, 0),
+				hitboxes = {
+					{
+						start = 4,
+						duration = 16,
+						x = 16,
+						y = 0,
+						width = 24,
+						height = 20
+					}
+				},
+				onStart = function()
+					self.nextString = "attack2"
+					self.attackTimer.after(30, function()
+						self.nextString = "attack1"
+					end)
+				end
+			},
+			attack2 = {
+				animation = "Attack2",
+				movementLockFrames = 16,
+				attackLockFrames = 12,
+				velocityMultiplier = Vector(0, 0),
+				hitboxes = {
+					{
+						start = 4,
+						duration = 16,
+						x = 16,
+						y = 0,
+						width = 24,
+						height = 20
+					}
+				},
+				onStart = function()
+					self.nextString = "attack3"
+					self.attackTimer.after(30, function()
+						self.nextString = "attack1"
+					end)
+				end
+			},
+			attack3 = {
+				animation = "Attack3",
+				movementLockFrames = 16,
+				attackLockFrames = 16,
+				velocityMultiplier = Vector(0, 0),
+				hitboxes = {
+					{
+						start = 4,
+						duration = 16,
+						x = 16,
+						y = 0,
+						width = 24,
+						height = 20
+					}
+				},
+				onStart = function()
+					self.nextString = "attack1"
+				end
+			},
+			dashattack = {
+				animation = "DashAtk",
+				movementLockFrames = 30,
+				attackLockFrames = 30,
+				velocityMultiplier = Vector(1, 1),
+				hitboxes = {
+					{
+						start = 4,
+						duration = 24,
+						x = 20,
+						y = -2,
+						width = 22,
+						height = 14
+					}
+				},
+				onStart = function()
+					self.timer.clear()
+					self.timer.tween(30, self.velocity, {x = 0}, "linear")
+				end
+			},
+			jumpattack = {
+				animation = "JumpAtk",
+				movementLockFrames = 0,
+				attackLockFrames = 0,
+				velocityMultiplier = Vector(1, 1),
+				hitboxes = {
+					{
+						start = 6,
+						duration = 20,
+						x = 18,
+						y = 0,
+						width = 16,
+						height = 20
+					}
+				}
+			}
+		}
+
+		self.movementLock = 0
+		self.attackLock = 0
+
+		self.attackBuffer = false
+
+		self.nextString = "attack1"
+
 		self.orientation = Vector(1, 0)
 		self.wallgrabOrientation = Vector(0, 0)
 	end
@@ -47,9 +157,10 @@ end
 
 function PlayerController:update()
 	self.timer.update(1)
+	self.attackTimer.update(1)
 	local desiredMovement = self:getDesiredMovement()
 
-	if not self.locked then
+	if self.movementLock <= 0 then
 
 		if desiredMovement.x ~= 0 then
 			self.orientation.x = desiredMovement.x
@@ -99,6 +210,12 @@ function PlayerController:update()
 				self.velocity.x = math.min(self.velocity.x + decel, 0)
 			end
 		end
+	else
+		self.movementLock = self.movementLock - 1
+	end
+
+	if self.attackLock > 0 then
+		self.attackLock = self.attackLock - 1
 	end
 
 	if (self.state == "jumping" or self.state == "dashjumping") and self.velocity.y > 0 then
@@ -112,6 +229,9 @@ function PlayerController:update()
 
 	self:setAnimation()
 
+	if self.attackBuffer then
+		self:attack()
+	end
 
 	local afterImageComponent = self.entity:getComponent("AfterImage")
 
@@ -156,7 +276,7 @@ function PlayerController:receiveEvent(event, animationName)
 		elseif animationName == "DashAtk" then
 			self.state = "walking"
 			self.animationView:switchAnimation("Idle", true)
-			self.locked = false
+			self.movementLock = 0
 		elseif animationName == "JumpAtk" then
 			self.state = "falling"
 			self.animationView:switchAnimation("Jump", true)
@@ -205,11 +325,7 @@ function PlayerController:jump()
 		self.animationView:switchAnimation("ClimbCling", true)
 		self.velocity.y = self.jumpstrength * -1
 		self.velocity.x = self.wallgrabOrientation.x * self.maxspeed
-		self.timer.clear()
-		self.locked = true
-		self.timer.after(8, function()
-			self.locked = false
-		end)
+		self.movementLock = 4
 	end
 end
 
@@ -221,66 +337,46 @@ function PlayerController:land()
 	self.velocity.y = 0
 end
 
+function PlayerController:performAttack(key)
+	local attack = self.attacks[key]
+	self.animationView:switchAnimation(attack.animation, true)
+	self.movementLock = attack.movementLockFrames
+	self.velocity.x = self.velocity.x * attack.velocityMultiplier.x
+	self.velocity.y = self.velocity.y * attack.velocityMultiplier.y
+	self.attackLock = attack.attackLockFrames
+	self.attackTimer.clear()
+	for i,v in ipairs(attack.hitboxes) do
+		self.attackTimer.after(v.start, function()
+			addEntity(PlayerMeleeAttack(self.entity, self.world, v.x, v.y, v.width, v.height, v.duration))
+		end)
+	end
+	if attack.onStart then
+		attack.onStart()
+	end
+end
+
 function PlayerController:attack()
-	if self.locked then return end
+	if self.attackLock > 0 then
+		if self.state == "walking" or self.state == "attack1" or self.state == "attack2" then
+			self.attackBuffer = true
+		end
+		return
+	else
+		self.attackBuffer = false
+	end
 
 	if self.state == "dashjumping" then
 		self.state = "dashjumpattack"
-		self.animationView:switchAnimation("JumpAtk", true)
-		self.timer.after(6, function()
-			addEntity(PlayerMeleeAttack(self.entity, self.world, 18, 0, 16, 20, 20))
-		end)
+		self:performAttack("jumpattack")
 	elseif self.state == "jumping" or self.state == "falling" then
 		self.state = "jumpattack"
-		self.animationView:switchAnimation("JumpAtk", true)
-		self.timer.after(6, function()
-			addEntity(PlayerMeleeAttack(self.entity, self.world, 18, 3, 16, 26, 20))
-		end)
+		self:performAttack("jumpattack")
 	elseif self.state == "dashing" then
 		self.state = "dashattack"
-		self.animationView:switchAnimation("DashAtk", true)
-		self.timer.clear()
-		self.timer.tween(30, self.velocity, {x = 0}, "linear")
-		self.timer.after(10, function()
-			addEntity(PlayerMeleeAttack(self.entity, self.world, 20, -2, 22, 14, 16))
-		end)
-		self.locked = true
-	elseif self.state == "walking" then
-		self.state = "attack1"
-		self.animationView:switchAnimation("Attack1", true)
-		self.timer.clear()
-		self.locked = true
-		self.velocity.x = 0
-		self.timer.after(4, function()
-			addEntity(PlayerMeleeAttack(self.entity, self.world, 16, 0, 24, 20, 16))
-		end)
-		self.timer.after(16, function()
-			self.locked = false
-		end)
-	elseif self.state == "attack1" then
-		self.state = "attack2"
-		self.animationView:switchAnimation("Attack2", true)
-		self.timer.clear()
-		self.locked = true
-		self.velocity.x = 0
-		self.timer.after(4, function()
-			addEntity(PlayerMeleeAttack(self.entity, self.world, 16, 0, 24, 20, 16))
-		end)
-		self.timer.after(16, function()
-			self.locked = false
-		end)
-	elseif self.state == "attack2" then
-		self.state = "attack3"
-		self.animationView:switchAnimation("Attack3", true)
-		self.timer.clear()
-		self.locked = true
-		self.velocity.x = 0
-		self.timer.after(4, function()
-			addEntity(PlayerMeleeAttack(self.entity, self.world, 16, 0, 24, 20, 16))
-		end)
-		self.timer.after(16, function()
-			self.locked = false
-		end)
+		self:performAttack("dashattack")
+	elseif self.state == "walking" or self.state == "attack1" or self.state == "attack2" then
+		self.state = self.nextString
+		self:performAttack(self.nextString)
 	end
 end
 
@@ -311,7 +407,8 @@ function PlayerController:dash()
 	if self.state == "dashing" or self.state == "jumping" or self.state == "falling" or self.state == "wallgrab" or self.state == "dashattack" then return end
 
 	self.state = "dashing"
-	self.locked = false
+	self.movementLock = 0
+	self.attackLock = 0
 	self.animationView:switchAnimation("Dash", true)
 	self.velocity.y = 0 -- math.max(self.velocity.y, 0)
 	self.velocity.x = self.maxspeed * 2 * self.orientation.x
