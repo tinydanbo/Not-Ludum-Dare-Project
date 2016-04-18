@@ -292,7 +292,6 @@ end
 function PlayerController:setAnimation()
 	local animationView = self.entity:getComponent("AnimationView")
 
-	print(self.orientation.x)
 	local shouldFlip = self.orientation.x ~= 1
 
 	animationView:setOffset(0, 10)
