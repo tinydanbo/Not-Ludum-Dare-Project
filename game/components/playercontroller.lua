@@ -318,7 +318,7 @@ function PlayerController:jump()
 
 	if self.state == "wallgrab" then
 		self.state = "jumping"
-		self.animationView:switchAnimation("ClimbCling", true)
+		self.animationView:switchAnimation("Jump", true)
 		self.velocity.y = self.jumpstrength * -1
 		self.velocity.x = self.wallgrabOrientation.x * self.maxspeed
 		self.movementLock = 4
