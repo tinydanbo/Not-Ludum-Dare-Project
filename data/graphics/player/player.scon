@@ -5,7 +5,7 @@
 				{
 					"gline": [],
 					"id": 0,
-					"interval": 16,
+					"interval": 100,
 					"length": 1000,
 					"mainline": {
 						"key": [
@@ -48,7 +48,7 @@
 				{
 					"gline": [],
 					"id": 1,
-					"interval": 16,
+					"interval": 100,
 					"length": 800,
 					"mainline": {
 						"key": [
@@ -309,7 +309,7 @@
 				{
 					"gline": [],
 					"id": 2,
-					"interval": 16,
+					"interval": 100,
 					"length": 1000,
 					"looping": "false",
 					"mainline": {
@@ -383,7 +383,7 @@
 				{
 					"gline": [],
 					"id": 3,
-					"interval": 16,
+					"interval": 100,
 					"length": 120,
 					"mainline": {
 						"key": [
@@ -425,7 +425,7 @@
 				{
 					"gline": [],
 					"id": 4,
-					"interval": 16,
+					"interval": 100,
 					"length": 500,
 					"looping": "false",
 					"mainline": {
@@ -666,7 +666,7 @@
 				{
 					"gline": [],
 					"id": 5,
-					"interval": 16,
+					"interval": 100,
 					"length": 80,
 					"mainline": {
 						"key": [
@@ -708,7 +708,7 @@
 				{
 					"gline": [],
 					"id": 6,
-					"interval": 16,
+					"interval": 100,
 					"length": 320,
 					"looping": "false",
 					"mainline": {
@@ -1004,7 +1004,7 @@
 				{
 					"gline": [],
 					"id": 7,
-					"interval": 16,
+					"interval": 100,
 					"length": 120,
 					"mainline": {
 						"key": [
@@ -1044,7 +1044,7 @@
 				{
 					"gline": [],
 					"id": 8,
-					"interval": 16,
+					"interval": 100,
 					"length": 160,
 					"looping": "false",
 					"mainline": {
@@ -1086,7 +1086,7 @@
 				{
 					"gline": [],
 					"id": 9,
-					"interval": 16,
+					"interval": 100,
 					"length": 336,
 					"looping": "false",
 					"mainline": {
@@ -1326,7 +1326,7 @@
 				{
 					"gline": [],
 					"id": 10,
-					"interval": 16,
+					"interval": 100,
 					"length": 352,
 					"looping": "false",
 					"mainline": {
@@ -1540,7 +1540,7 @@
 				{
 					"gline": [],
 					"id": 11,
-					"interval": 16,
+					"interval": 100,
 					"length": 384,
 					"looping": "false",
 					"mainline": {
@@ -1779,7 +1779,7 @@
 				{
 					"gline": [],
 					"id": 12,
-					"interval": 16,
+					"interval": 100,
 					"length": 80,
 					"mainline": {
 						"key": [
@@ -1808,7 +1808,8 @@
 										"angle": 0,
 										"file": 32,
 										"folder": 0,
-										"x": 8
+										"scale_x": -1,
+										"x": -8
 									},
 									"spin": 0
 								}
@@ -1820,7 +1821,7 @@
 				{
 					"gline": [],
 					"id": 13,
-					"interval": 16,
+					"interval": 100,
 					"length": 1000,
 					"mainline": {
 						"key": [
@@ -1849,8 +1850,9 @@
 										"angle": 0,
 										"file": 33,
 										"folder": 0,
-										"x": 8.115183246073299,
-										"y": -0.2617801047120419
+										"scale_x": -1,
+										"x": -8.115183246073299,
+										"y": -0.2617801047120421
 									},
 									"spin": 0
 								}
@@ -1862,7 +1864,7 @@
 				{
 					"gline": [],
 					"id": 14,
-					"interval": 16,
+					"interval": 100,
 					"length": 192,
 					"looping": "false",
 					"mainline": {
@@ -1907,8 +1909,7 @@
 										"angle": 0,
 										"file": 34,
 										"folder": 0,
-										"scale_x": -1,
-										"x": 7,
+										"x": -7,
 										"y": 1
 									},
 									"spin": 0
