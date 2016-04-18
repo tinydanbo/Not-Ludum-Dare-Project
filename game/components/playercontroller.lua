@@ -292,6 +292,7 @@ end
 function PlayerController:setAnimation()
 	local animationView = self.entity:getComponent("AnimationView")
 
+	print(self.orientation.x)
 	local shouldFlip = self.orientation.x ~= 1
 
 	animationView:setOffset(0, 10)
@@ -301,7 +302,6 @@ function PlayerController:setAnimation()
 	end
 
 	if animationView:getAnimationName() == "Climb" or animationView:getAnimationName() == "ClimbCling" then
-		shouldFlip = not shouldFlip
 		if self.orientation.x > 0 then
 			animationView:setOffset(6, 11)
 		else
