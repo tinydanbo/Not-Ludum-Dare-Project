@@ -125,7 +125,7 @@ PlayerController = Class{
 						x = 18,
 						y = 0,
 						width = 16,
-						height = 20
+						height = 28
 					}
 				}
 			}
