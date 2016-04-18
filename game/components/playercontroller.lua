@@ -170,18 +170,16 @@ function PlayerController:update()
 			if desiredMovement.x == self.wallgrabOrientation.x then
 				self.state = "falling"
 				self.animationView:switchAnimation("Jump", true)
+			elseif desiredMovement.x == 0 then
+				self.state = "falling"
+				self.entity:move(Vector(self.wallgrabOrientation.x, 0))
+				self.orientation.x = self.orientation.x * -1
+				self.animationView:switchAnimation("Jump", true)
 			else
-				self.wallgrabframes = self.wallgrabframes - 1
-				if self.wallgrabframes <= 0 then
+				local collisionComponent = self.entity:getComponent("SimpleCollision")
+				if not collisionComponent:query(self.wallgrabOrientation.x * -1, 0) then
 					self.state = "falling"
 					self.animationView:switchAnimation("Jump", true)
-					self.orientation.x = self.orientation.x * -1
-				else
-					local collisionComponent = self.entity:getComponent("SimpleCollision")
-					if not collisionComponent:query(self.wallgrabOrientation.x * -1, 0) then
-						self.state = "falling"
-						self.animationView:switchAnimation("Jump", true)
-					end
 				end
 			end
 		end
@@ -402,7 +400,6 @@ function PlayerController:getOrientation()
 end
 
 function PlayerController:maintainWallGrab(normal_x)
-	self.wallgrabframes = 20
 	self.state = "wallgrab"
 	self.velocity.y = 0
 	self.wallgrabOrientation.x = normal_x
