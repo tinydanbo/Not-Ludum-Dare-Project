@@ -1864,8 +1864,8 @@
 				{
 					"gline": [],
 					"id": 14,
-					"interval": 100,
-					"length": 192,
+					"interval": 16,
+					"length": 16,
 					"looping": "false",
 					"mainline": {
 						"key": [
