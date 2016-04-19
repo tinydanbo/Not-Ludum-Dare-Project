@@ -708,8 +708,8 @@
 				{
 					"gline": [],
 					"id": 6,
-					"interval": 100,
-					"length": 320,
+					"interval": 16,
+					"length": 208,
 					"looping": "false",
 					"mainline": {
 						"key": [
@@ -748,7 +748,7 @@
 										"z_index": "1"
 									}
 								],
-								"time": 48
+								"time": 32
 							},
 							{
 								"bone_ref": [],
@@ -767,7 +767,7 @@
 										"z_index": "1"
 									}
 								],
-								"time": 96
+								"time": 64
 							},
 							{
 								"bone_ref": [],
@@ -786,7 +786,7 @@
 										"z_index": "1"
 									}
 								],
-								"time": 144
+								"time": 112
 							},
 							{
 								"bone_ref": [],
@@ -805,7 +805,7 @@
 										"z_index": "1"
 									}
 								],
-								"time": 192
+								"time": 144
 							},
 							{
 								"bone_ref": [],
@@ -818,7 +818,7 @@
 										"z_index": "0"
 									}
 								],
-								"time": 240
+								"time": 176
 							}
 						]
 					},
@@ -851,7 +851,7 @@
 										"x": -1
 									},
 									"spin": 0,
-									"time": 48
+									"time": 32
 								}
 							],
 							"name": "jumpatk2"
@@ -869,7 +869,7 @@
 										"y": 1
 									},
 									"spin": 0,
-									"time": 96
+									"time": 64
 								},
 								{
 									"id": 1,
@@ -881,7 +881,7 @@
 										"y": 1
 									},
 									"spin": 0,
-									"time": 144
+									"time": 112
 								},
 								{
 									"id": 2,
@@ -893,7 +893,7 @@
 										"y": 1
 									},
 									"spin": 0,
-									"time": 192
+									"time": 144
 								},
 								{
 									"id": 3,
@@ -905,7 +905,7 @@
 										"y": 1
 									},
 									"spin": 0,
-									"time": 240
+									"time": 176
 								}
 							],
 							"name": "jumpatk3"
@@ -940,7 +940,7 @@
 										"y": 17
 									},
 									"spin": 0,
-									"time": 48
+									"time": 32
 								}
 							],
 							"name": "jumpatk2_"
@@ -958,7 +958,7 @@
 										"y": 18
 									},
 									"spin": 0,
-									"time": 96
+									"time": 64
 								}
 							],
 							"name": "jumpatk3_1"
@@ -976,7 +976,7 @@
 										"y": 18
 									},
 									"spin": 0,
-									"time": 144
+									"time": 112
 								}
 							],
 							"name": "jumpatk3_2"
@@ -994,7 +994,7 @@
 										"y": 13
 									},
 									"spin": 0,
-									"time": 192
+									"time": 144
 								}
 							],
 							"name": "jumpatk3_3"
@@ -1864,7 +1864,7 @@
 				{
 					"gline": [],
 					"id": 14,
-					"interval": 16,
+					"interval": 100,
 					"length": 16,
 					"looping": "false",
 					"mainline": {
